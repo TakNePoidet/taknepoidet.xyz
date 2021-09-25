@@ -1,0 +1,81 @@
+extends ../layout/main.pug
+block vars
+	- var title = "Webpack Starter от TakNePoidet";
+block content
+	include ../includes/icon.pug
+	section.section.section--home
+		.container
+			.section__content
+				.home-title
+					h1 Webpack Starter
+					.home-title__author от
+						b &nbsp; TakNePoidet
+
+	section.section
+		.container
+			h3.section__title Описание
+			.section__content
+				p Простой инструментарий веб-разработки с использованием <span>Webpack</span>. Подходит для создания статических HTML-шаблонов, разработки тем <span>Wordpress</span>, <span>Laravel</span> и frontend проекта.
+				figure
+					img(src=require("@images/webpack.png"), alt='')
+
+	section.section.section--oportunities
+		.container
+			h3.section__title Возможности
+			.section__content
+				ul
+					li
+						+icon('tick', 30)
+						| Современный и продвинутый <span>JavaScript</span>;
+					li
+						+icon('tick', 30)
+						| Поддержка фреймворков <span>Vue</span> и <span>React</span>;
+					li
+						+icon('tick', 30)
+						| Расширенная типизация с <span>TypeScript</span>;
+					li
+						+icon('tick', 30)
+						| Поддержка шаблонизатора <span>Pug</span>;
+					li
+						+icon('tick', 30)
+						| Делает код красивее с <span>Stylelint</span>, <span>Prettier</span>, <span>Eslint</span>;
+					li
+						+icon('tick', 30)
+						| Оптимизация всех ресурсов для более быстрой загрузки страницы.
+
+	section.section
+		.container
+			h3.section__title Старт
+			.section__content
+				p Клонируйте репозиторий
+				pre
+					code.language-bash git clone https://github.com/TakNePoidet/webpack-starter.git <имя проекта>
+
+				p перейдите в папку с проектом
+				pre
+					code.language-bash cd <имя проекта>
+
+				p удалите папку в <mark>.git</mark>
+				pre
+					code.language-bash rm -R ./git
+
+				p установите пакеты для разработки
+				pre
+					code.language-bash yarn # или npm i
+
+				p по желанию исправьте данные в package.json
+				pre
+					code.language-json
+						| {
+						| &nbsp;&nbsp;&nbsp;&nbsp;"name": "<имя проекта>",
+						| &nbsp;&nbsp;&nbsp;&nbsp;"version": "<версия>",
+						| }
+				p разрабатывайте
+				pre
+					code.language-javascript await new Coding().go()
+
+	section.section
+		.container
+			h3.section__title Команды
+			.section__content
+				#app-vue
