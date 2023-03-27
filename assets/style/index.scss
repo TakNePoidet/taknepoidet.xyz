@@ -1,0 +1,6 @@
+@use 'utility';
+@import 'taknepoidet-scss-starter';
+
+body {
+	border-radius: #{utility.rem(16)};
+}

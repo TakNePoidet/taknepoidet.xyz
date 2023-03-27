@@ -1,0 +1,5 @@
+@use 'taknepoidet-scss-starter' as starter;
+
+@function rem($value) {
+	@return starter.to-rem($value, 16);
+}

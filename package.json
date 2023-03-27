@@ -1,0 +1,49 @@
+{
+	"name": "taknepoidet-nuxt-starter",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"prepare": "husky install",
+		"prettier": "prettier --write .",
+		"stylelint": "stylelint --fix \"./**/*.{scss,css,sass,vue}\"",
+		"eslint": "eslint --fix .",
+		"beautifier": "npm run stylelint && npm run eslint && npm run prettier"
+	},
+	"devDependencies": {
+		"@nuxtjs/eslint-config-typescript": "^12.0.0",
+		"@taknepoidet-config/eslint-config": "^1.13.0",
+		"@taknepoidet-config/prettier": "^1.13.0",
+		"@taknepoidet-config/stylelint": "^1.13.0",
+		"eslint": "^8.36.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.0",
+		"nuxt": "^3.3.2",
+		"prettier": "^2.8.7",
+		"pretty-quick": "^3.1.3",
+		"sass": "^1.60.0",
+		"stylelint": "^15.3.0"
+	},
+	"lint-staged": {
+		"**/*.(scss|css|sass|vue)": [
+			"stylelint --fix",
+			"git add"
+		],
+		"**/*.(js|ts|vue)": [
+			"eslint --fix",
+			"git add"
+		],
+		"**/*.*": [
+			"pretty-quick",
+			"git add"
+		]
+	},
+	"dependencies": {
+		"taknepoidet-scss-starter": "^1.0.0"
+	}
+}
