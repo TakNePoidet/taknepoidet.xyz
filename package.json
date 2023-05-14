@@ -17,17 +17,17 @@
 	},
 	"devDependencies": {
 		"@nuxtjs/eslint-config-typescript": "^12.0.0",
-		"@taknepoidet-config/eslint-config": "^1.13.0",
-		"@taknepoidet-config/prettier": "^1.13.0",
-		"@taknepoidet-config/stylelint": "^1.13.0",
-		"eslint": "^8.36.0",
+		"@taknepoidet-config/eslint-config": "^1.16.0",
+		"@taknepoidet-config/prettier": "^1.16.0",
+		"@taknepoidet-config/stylelint": "^1.16.0",
+		"eslint": "^8.40.0",
 		"husky": "^8.0.3",
-		"lint-staged": "^13.2.0",
-		"nuxt": "^3.3.2",
-		"prettier": "^2.8.7",
+		"lint-staged": "^13.2.2",
+		"nuxt": "^3.4.3",
+		"prettier": "^2.8.8",
 		"pretty-quick": "^3.1.3",
-		"sass": "^1.60.0",
-		"stylelint": "^15.3.0"
+		"sass": "^1.62.1",
+		"stylelint": "^15.6.1"
 	},
 	"lint-staged": {
 		"**/*.(scss|css|sass|vue)": [
