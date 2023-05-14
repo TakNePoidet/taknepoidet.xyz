@@ -4,5 +4,14 @@ export default defineNuxtConfig({
 	components: false,
 	imports: {
 		autoImport: false
-	}
+	},
+	modules: [
+		'@nuxtjs/google-fonts',
+	],
+	googleFonts: {
+		display: 'swap',
+		families: {
+			Manrope: [400, 500, 600, 700]
+		}
+	},
 });

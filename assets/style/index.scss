@@ -1,6 +1,8 @@
 @use 'utility';
 @import 'taknepoidet-scss-starter';
 
-body {
+body,
+html {
+	font-family: Manrope, sans-serif;
 	border-radius: #{utility.rem(16)};
 }
