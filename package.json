@@ -20,6 +20,8 @@
 		"@taknepoidet-config/eslint-config": "^1.16.0",
 		"@taknepoidet-config/prettier": "^1.16.0",
 		"@taknepoidet-config/stylelint": "^1.16.0",
+		"@vueuse/core": "^10.1.2",
+		"@vueuse/nuxt": "^10.1.2",
 		"eslint": "^8.40.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.2",
