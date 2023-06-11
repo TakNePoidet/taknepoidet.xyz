@@ -16,6 +16,7 @@
 		"beautifier": "npm run stylelint && npm run eslint && npm run prettier"
 	},
 	"devDependencies": {
+		"@nuxt/image-edge": "^1.0.0-rc.1-28106434.299e03e",
 		"@nuxtjs/eslint-config-typescript": "^12.0.0",
 		"@taknepoidet-config/eslint-config": "^1.16.0",
 		"@taknepoidet-config/prettier": "^1.16.0",

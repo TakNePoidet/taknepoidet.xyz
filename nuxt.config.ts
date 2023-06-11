@@ -8,7 +8,8 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@vueuse/nuxt',
-		'@pinia/nuxt'
+		'@pinia/nuxt',
+		'@nuxt/image-edge',
 	],
 	googleFonts: {
 		display: 'swap',
