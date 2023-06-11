@@ -1,0 +1,30 @@
+@use 'utility';
+
+:root {
+	--primary-text: #222;
+	--brand-color: #0078e7;
+	--white: #fff;
+	--blank-fill: #fff;
+	--blank-fill--о90: rgb(255 255 255 / 90%);
+	--base-border: #f2f2f2;
+	--brand-vk: #07f;
+	--brand-whatsapp: #25d366;
+	--brand-phone: #5bc14b;
+	--brand-telegram: #2babee;
+	--brand-gitgub: #24292f;
+	--brand-instagram: #c7018b;
+	--brand-gmail: #ea4335;
+	--container: #{utility.rem(1360)};
+
+	@media screen and (width <= 1424px) {
+		--container: 800px;
+	}
+}
+
+@media (color-gamut: p3) {
+	:root {
+		@supports (color: oklch(58.09% 0.23 254.84)) {
+			--brand-color: oklch(58.09% 0.23 254.84);
+		}
+	}
+}
