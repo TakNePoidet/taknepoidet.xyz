@@ -1,0 +1,1 @@
+.picture{background-position:50%;background-repeat:no-repeat;background-size:44px;display:block;overflow:hidden}.picture img{display:block;filter:blur(0);transform:scale(1);transition:filter var(--transition-animation),transform var(--transition-animation)}.picture.picture--is-loading>img{filter:blur(10px);transform:scale(1.2)}.icon{color:currentcolor;display:inline-block}
