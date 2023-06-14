@@ -1,14 +1,75 @@
 <script setup lang="ts">
+import confetti from 'canvas-confetti';
+import { throttle } from '~/utils/throttle';
 import { useNamespace } from '~/composables/useNamespace';
+import ThePicture from '~/components/elements/ThePicture.vue';
+import { computed, useState } from '#imports';
 
-const { base } = useNamespace('footer');
+const { base, component } = useNamespace('footer');
+
+const count = 200;
+const defaults: confetti.Options = {
+	origin: { y: 1, x: 0.5 }
+};
+
+function fire(ratio: number, opts: confetti.Options) {
+	confetti({ ...defaults, ...opts, particleCount: Math.floor(count * ratio) });
+}
+const memoji = computed(() => ['memoji-like.png', 'memoji-bellissimo.png', 'memoji-call-me.png']);
+
+const active = useState(() => 0);
+
+function next() {
+	active.value += 1;
+	if (active.value > memoji.value.length - 1) {
+		active.value = 0;
+	}
+}
+
+const show = throttle(() => {
+	next();
+	fire(0.25, {
+		spread: 26,
+		startVelocity: 55
+	});
+	fire(0.2, {
+		spread: 60
+	});
+	fire(0.35, {
+		spread: 100,
+		decay: 0.91,
+		scalar: 0.8
+	});
+	fire(0.1, {
+		spread: 120,
+		startVelocity: 25,
+		decay: 0.92,
+		scalar: 1.2
+	});
+	fire(0.1, {
+		spread: 120,
+		startVelocity: 45
+	});
+}, 1000);
 </script>
 
 <template>
 	<footer :class="[base()]">
-		<span>Якин Никита</span>
-		<nuxt-picture src="/images/memoji.png" :width="256" :height="256" />
-		{{ new Date().getFullYear() }}
+		<div :class="[component('content')]">
+			<span>Якин <u>Никита</u></span>
+			<button type="button" @click="show">
+				<the-picture
+					v-for="(item, i) in memoji"
+					v-show="active === i"
+					:key="i"
+					alt="Мемодзи"
+					:src="`/images/${item}`"
+					:width="256"
+					:height="256"
+				/>
+			</button>
+			<span>{{ new Date().getFullYear() }}</span>
+		</div>
 	</footer>
 </template>
 
@@ -16,6 +77,7 @@ const { base } = useNamespace('footer');
 @use 'assets/style/utility';
 
 .footer {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -25,8 +87,29 @@ const { base } = useNamespace('footer');
 	font-size: #{utility.rem(32)};
 	line-height: 100%;
 
+	& &__content {
+		position: relative;
+		display: flex;
+		gap: #{utility.rem(32)};
+		align-items: center;
+		justify-content: center;
+
+		> button {
+			margin: 0;
+			padding: 0;
+			background: transparent;
+			border: 0;
+			appearance: none;
+		}
+	}
+
 	span {
-		color: var(--brand-color);
+		//position: absolute;
+		white-space: nowrap;
+
+		&:first-child {
+			color: var(--brand-color);
+		}
 	}
 
 	picture,
@@ -39,6 +122,10 @@ const { base } = useNamespace('footer');
 	@media screen and (width <= 1424px) {
 		padding-top: #{utility.rem(32)};
 		font-size: #{utility.rem(16)};
+
+		& &__content {
+			gap: #{utility.rem(8)};
+		}
 
 		picture,
 		picture img {

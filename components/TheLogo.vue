@@ -28,7 +28,7 @@ const { component, base } = useNamespace('logo');
 	}
 
 	color: var(--primary-text);
-	transition: color 200ms ease-in-out;
+	transition: color var(--transition-animation);
 
 	@media (hover: hover) {
 		&:hover {

@@ -1,12 +1,41 @@
 @use 'utility';
+@use 'focus-visible';
 @import 'taknepoidet-scss-starter';
 @import 'variables';
 
 body,
 html {
-	height: 100%;
+	height: max(100%, 100vh);
 	min-height: 100%;
 	color: var(--primary-text);
 	font-family: Manrope, sans-serif;
-	border-radius: #{utility.rem(16)};
+	background: var(--blank-fill);
+}
+
+body {
+	padding: 0 var(--ears);
+}
+
+@import 'production';
+
+:focus-visible,
+:focus {
+	@include focus-visible.setup;
+}
+
+/* Remove the focus outline */
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+html.overflow-hidden {
+	height: 100vh;
+	overflow: hidden;
+
+	body {
+		position: fixed;
+		inset: var(--overlay-scroll-position) 0 0 0;
+		padding-right: var(--scroll-width-offset);
+		overflow: hidden;
+	}
 }

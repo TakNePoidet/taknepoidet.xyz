@@ -14,14 +14,14 @@ import TheFooter from '~/components/TheFooter.vue';
 <style lang="scss">
 /* stylelint-disable-next-line selector-id-pattern */
 #__nuxt {
-	//display: flex;
+	display: flex;
 	flex-direction: column;
 	align-content: stretch;
 	justify-content: flex-start;
 	min-height: 100%;
 
 	main {
-		//flex: 0 0 100%;
+		flex: 1;
 	}
 }
 </style>

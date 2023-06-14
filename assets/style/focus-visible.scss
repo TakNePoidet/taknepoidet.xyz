@@ -1,0 +1,25 @@
+@use 'utility';
+
+@function color() {
+	@return var(--focus-visible);
+}
+
+@mixin active {
+	outline: #{utility.rem(4)} solid #{color()};
+	outline-offset: #{utility.rem(2)};
+}
+
+@mixin setup {
+	border-radius: #{utility.rem(4)};
+	outline: #{utility.rem(0)} solid transparent;
+	outline-offset: #{utility.rem(4)};
+	transition: outline var(--transition-animation);
+
+	&:focus-visible {
+		@include active;
+	}
+}
+
+@mixin disabled() {
+	outline: none !important;
+}

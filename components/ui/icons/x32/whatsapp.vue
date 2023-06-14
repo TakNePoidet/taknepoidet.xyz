@@ -1,0 +1,19 @@
+<template>
+	<svg fill="none" viewBox="0 0 32 32">
+		<path
+			stroke="currentColor"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			stroke-width="2"
+			d="M12 13.333a.666.666 0 1 0 1.333 0V12A.667.667 0 1 0 12 12v1.333Zm0 0A6.667 6.667 0 0 0 18.667 20m0 0H20a.667.667 0 1 0 0-1.333h-1.333a.667.667 0 1 0 0 1.333ZM4 28l2.2-5.067a12 12 0 1 1 4.533 3.867L4 28Z"
+		/>
+	</svg>
+</template>
+
+<script lang="ts" setup>
+import { defineOptions } from 'vue';
+
+defineOptions({
+	name: '#{NAME}'
+});
+</script>
