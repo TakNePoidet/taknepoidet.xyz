@@ -13,7 +13,8 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@nuxt/image-edge',
 		'@nuxtjs/color-mode',
-		'nuxt-simple-robots'
+		'nuxt-simple-robots',
+		'nuxt-yandex-metrika'
 	],
 	googleFonts: {
 		display: 'swap',
@@ -23,5 +24,16 @@ export default defineNuxtConfig({
 	},
 	robots: {
 		credits: false
+	},
+	yandexMetrika: {
+		id: process.env.VITE_YANDEX_METRICA,
+		delay: 3000,
+		verification: process.env.VITE_YANDEX_VERIFICATION,
+		options: {
+			clickmap:true,
+			trackLinks:true,
+			accurateTrackBounce:true,
+			webvisor:true
+		}
 	}
 });
