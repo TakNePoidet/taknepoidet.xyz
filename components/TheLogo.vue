@@ -23,12 +23,12 @@ const { component, base } = useNamespace('logo');
 
 <style lang="scss">
 .logo {
+	color: var(--primary-text);
+	transition: color var(--transition-animation);
+
 	& &__sign {
 		color: var(--brand-color);
 	}
-
-	color: var(--primary-text);
-	transition: color var(--transition-animation);
 
 	@media (hover: hover) {
 		&:hover {

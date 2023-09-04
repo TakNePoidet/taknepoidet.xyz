@@ -1,32 +1,10 @@
 module.exports = {
-	extends: ['@nuxtjs/eslint-config-typescript', '@taknepoidet-config/eslint-config'],
+	root: true,
+	extends: ['@nuxt/eslint-config', 'plugin:vuejs-accessibility/recommended', 'prettier'],
+	plugins: ['vuejs-accessibility', 'prettier'],
 	rules: {
-		'vue/no-v-model-argument': 0,
-		'vue/multi-word-component-names': 0,
-		'vue/no-v-for-template-key': 0,
-		'import/no-cycle': 0,
-		'import/extensions': [
-			'error',
-			'always',
-			{
-				jsx: 'never',
-				js: 'never',
-				ts: 'never',
-				tsx: 'never'
-			}
-		],
-		'no-tabs': 0,
 		'max-len': 0,
-		'vue/max-len': 0
-	},
-	settings: {
-		'import/resolver': {
-			node: {
-				extensions: ['.scss', '.sass', '.ts', '.js', '.tsx', '.jsx']
-			},
-			typescript: {
-				project: ['tsconfig.json']
-			}
-		}
+		'prettier/prettier': 'error',
+		'vue/no-multiple-template-root': 0
 	}
 };

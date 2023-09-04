@@ -106,8 +106,8 @@ const items = computed<ContactItem[]>(() => [
 			position: relative;
 			display: flex;
 			gap: #{utility.rem(16)};
-			align-items: center;
 			justify-content: center;
+			align-items: center;
 			font-weight: 500;
 			font-size: #{utility.rem(32)};
 			line-height: 130%;
@@ -115,19 +115,21 @@ const items = computed<ContactItem[]>(() => [
 			a {
 				color: var(--primary-text);
 				text-decoration: none;
-				transition: color var(--transition-animation), text-decoration var(--transition-animation);
+				transition:
+					color var(--transition-animation),
+					text-decoration var(--transition-animation);
 
 				&::after {
-					position: absolute;
 					content: '';
+					position: absolute;
 					inset: 0;
 				}
 			}
 
 			span {
 				display: flex;
-				align-items: center;
 				justify-content: center;
+				align-items: center;
 				width: #{utility.rem(64)};
 				height: #{utility.rem(64)};
 				border-radius: 50%;

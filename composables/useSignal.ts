@@ -1,6 +1,5 @@
-import { Ref } from 'vue/dist/vue';
 import type { UnwrapRef } from 'vue';
-import { ref, useState } from '#imports';
+import { ref } from '#imports';
 
 export function useSignal<T>(init: T) {
 	const state = ref(init);

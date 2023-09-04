@@ -123,14 +123,14 @@ const skills = computed<Skill[]>(() => [
 		li {
 			display: flex;
 			gap: #{utility.rem(16)};
-			align-items: center;
 			justify-content: center;
+			align-items: center;
 			padding: #{utility.rem(16)} #{utility.rem(32)};
+			border-radius: #{utility.rem(8)};
+			background-color: var(--light-fill);
 			font-weight: 500;
 			font-size: #{utility.rem(32)};
 			line-height: 130%;
-			background-color: var(--light-fill);
-			border-radius: #{utility.rem(8)};
 
 			.icon {
 				width: #{utility.rem(32)};

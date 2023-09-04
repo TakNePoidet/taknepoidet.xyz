@@ -35,24 +35,24 @@
 @media (color-gamut: p3) {
 	:root {
 		@supports (color: oklch(58.09% 0.23 254.84)) {
-			--brand-color: oklch(56.72% 0.22 254.89);
-			--brand-vk: oklch(58.67% 0.24 258.03);
-			--brand-whatsapp: oklch(76.1% 0.27 149.74);
-			--brand-phone: oklch(72.46% 0.26 141.05);
-			--brand-telegram: oklch(70.47% 0.18 237.86);
-			--brand-instagram: oklch(55.06% 0.25 347.08);
-			--brand-gmail: oklch(62.57% 0.27 29.08);
-			--focus-visible: oklch(78.52% 0.19 62.57);
-			--brand-css: oklch(52.23% 0.2 252.24);
-			--brand-javascript: oklch(81.6% 0.19 101.39);
-			--brand-php: oklch(62.97% 0.21 273.61);
-			--brand-scss: oklch(56.91% 0.26 352.93);
-			--brand-typescript: oklch(56.45% 0.21 253.6);
-			--brand-nuxt: oklch(78.62% 0.24 155.63);
-			--brand-vue: oklch(70.25% 0.2 160.37);
-			--brand-laravel: oklch(62.81% 0.27 30);
-			--brand-mysql: oklch(46.29% 0.12 236.47);
-			--brand-html: oklch(62.48% 0.24 35.07);
+			--brand-color: oklch(56.72% 0.22 254.89deg);
+			--brand-vk: oklch(58.67% 0.24 258.03deg);
+			--brand-whatsapp: oklch(76.1% 0.27 149.74deg);
+			--brand-phone: oklch(72.46% 0.26 141.05deg);
+			--brand-telegram: oklch(70.47% 0.18 237.86deg);
+			--brand-instagram: oklch(55.06% 0.25 347.08deg);
+			--brand-gmail: oklch(62.57% 0.27 29.08deg);
+			--focus-visible: oklch(78.52% 0.19 62.57deg);
+			--brand-css: oklch(52.23% 0.2 252.24deg);
+			--brand-javascript: oklch(81.6% 0.19 101.39deg);
+			--brand-php: oklch(62.97% 0.21 273.61deg);
+			--brand-scss: oklch(56.91% 0.26 352.93deg);
+			--brand-typescript: oklch(56.45% 0.21 253.6deg);
+			--brand-nuxt: oklch(78.62% 0.24 155.63deg);
+			--brand-vue: oklch(70.25% 0.2 160.37deg);
+			--brand-laravel: oklch(62.81% 0.27 30deg);
+			--brand-mysql: oklch(46.29% 0.12 236.47deg);
+			--brand-html: oklch(62.48% 0.24 35.07deg);
 		}
 	}
 }
@@ -72,8 +72,8 @@
 
 	@media (color-gamut: p3) {
 		@supports (color: oklch(58.09% 0.23 254.84)) {
-			--brand-javascript: oklch(78.52% 0.19 62.57);
-			--brand-nuxt: oklch(66.55% 0.2 155.66);
+			--brand-javascript: oklch(78.52% 0.19 62.57deg);
+			--brand-nuxt: oklch(66.55% 0.2 155.66deg);
 		}
 	}
 }
@@ -93,7 +93,7 @@
 
 	@media (color-gamut: p3) {
 		@supports (color: oklch(58.09% 0.23 254.84)) {
-			--brand-color: oklch(62.36% 0.22 255.13);
+			--brand-color: oklch(62.36% 0.22 255.13deg);
 		}
 	}
 

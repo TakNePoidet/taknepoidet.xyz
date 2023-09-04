@@ -79,8 +79,8 @@ const show = throttle(() => {
 .footer {
 	position: relative;
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	padding-top: #{utility.rem(64)};
 	color: var(--primary-text);
 	font-weight: 500;
@@ -91,14 +91,14 @@ const show = throttle(() => {
 		position: relative;
 		display: flex;
 		gap: #{utility.rem(32)};
-		align-items: center;
 		justify-content: center;
+		align-items: center;
 
 		> button {
 			margin: 0;
 			padding: 0;
-			background: transparent;
 			border: 0;
+			background: transparent;
 			appearance: none;
 		}
 	}

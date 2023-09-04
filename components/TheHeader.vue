@@ -75,15 +75,15 @@ watch(isOpen, (value) => {
 
 	& &__bar {
 		display: flex;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
 		width: #{utility.rem(32)};
 		height: #{utility.rem(32)};
 		margin: 0;
 		padding: 0;
-		color: var(--primary-text);
-		background: transparent;
 		border: 0;
+		background: transparent;
+		color: var(--primary-text);
 		appearance: none;
 
 		.icon {
@@ -138,8 +138,8 @@ watch(isOpen, (value) => {
 		& &__controller {
 			display: flex;
 			gap: #{utility.rem(4)};
-			align-items: center;
 			justify-content: flex-start;
+			align-items: center;
 		}
 
 		& &__content {

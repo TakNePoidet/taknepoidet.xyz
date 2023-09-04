@@ -53,8 +53,8 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 			h2 {
 				color: var(--primary-text);
 				font-weight: 500;
-				font-size: #{utility.rem(64)};
 				font-style: normal;
+				font-size: #{utility.rem(64)};
 				line-height: 130%;
 			}
 		}
@@ -62,11 +62,12 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 			margin: 0 calc(var(--ears) * -1);
 
 			img {
+				object-fit: cover;
 				width: 100%;
 				height: auto;
-				object-fit: cover;
 				border-radius: #{utility.rem(32)};
-				box-shadow: 0 #{utility.rem(2.2222)} #{utility.rem(42.2222)} rgb(0 0 0 / 10%),
+				box-shadow:
+					0 #{utility.rem(2.2222)} #{utility.rem(42.2222)} rgb(0 0 0 / 10%),
 					0 #{utility.rem(0.8559)} #{utility.rem(13.4486)} rgb(0 0 0 / 6.07%),
 					0 #{utility.rem(0.181)} #{utility.rem(3.4403)} rgb(0 0 0 / 3.93%);
 				aspect-ratio: 16/ 9;

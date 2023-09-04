@@ -158,21 +158,23 @@ watch(isVisible, () => {
 
 	display: block;
 	overflow: hidden;
-	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 44px;
+	background-repeat: no-repeat;
 
 	& img {
 		display: block;
-		transform: scale(1);
 		filter: blur(0);
-		transition: filter var(--transition-animation), transform var(--transition-animation);
+		transition:
+			filter var(--transition-animation),
+			transform var(--transition-animation);
+		transform: scale(1);
 	}
 
 	&#{$self}--is-loading {
 		& > img {
-			transform: scale(1.2);
 			filter: blur(10px);
+			transform: scale(1.2);
 		}
 	}
 }

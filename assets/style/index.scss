@@ -7,9 +7,9 @@ body,
 html {
 	height: max(100%, 100vh);
 	min-height: 100%;
+	background: var(--blank-fill);
 	color: var(--primary-text);
 	font-family: Manrope, sans-serif;
-	background: var(--blank-fill);
 }
 
 body {
@@ -29,13 +29,13 @@ body {
 }
 
 html.overflow-hidden {
-	height: 100vh;
 	overflow: hidden;
+	height: 100vh;
 
 	body {
 		position: fixed;
 		inset: var(--overlay-scroll-position) 0 0 0;
-		padding-right: var(--scroll-width-offset);
 		overflow: hidden;
+		padding-right: var(--scroll-width-offset);
 	}
 }

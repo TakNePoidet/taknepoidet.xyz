@@ -73,21 +73,23 @@ watch(
 		position: relative;
 		z-index: 1;
 		padding: 0 #{utility.rem(16)};
+		border: none;
+		border-radius: #{utility.rem(32)};
+		background-color: transparent;
 		color: var(--primary-text);
 		font-weight: 400;
 		font-size: #{utility.rem(32)};
 		font-family: inherit;
 		line-height: 130%;
 		text-align: center;
-		background-color: transparent;
-		border: none;
-		border-radius: #{utility.rem(32)};
 		appearance: none;
 
 		&[aria-pressed='true'] {
 			color: var(--brand-color-invert);
-			transition: color var(--transition-animation), background-color var(--transition-animation);
 			pointer-events: none;
+			transition:
+				color var(--transition-animation),
+				background-color var(--transition-animation);
 		}
 
 		@media (hover: hover) {
@@ -100,13 +102,15 @@ watch(
 	}
 
 	& &__indicator {
-		position: absolute;
-		display: block;
-		background-color: var(--brand-color);
-		border-radius: #{utility.rem(32)};
-		transition: left var(--transition-animation), width var(--transition-animation);
 		content: '';
+		position: absolute;
 		inset: #{utility.rem(4)};
+		display: block;
+		border-radius: #{utility.rem(32)};
+		background-color: var(--brand-color);
+		transition:
+			left var(--transition-animation),
+			width var(--transition-animation);
 	}
 
 	button[value='light'][aria-pressed='true'] ~ &__indicator,
