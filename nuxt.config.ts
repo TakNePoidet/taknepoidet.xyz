@@ -7,11 +7,21 @@ export default defineNuxtConfig({
 	imports: {
 		autoImport: false
 	},
-	modules: ['@nuxtjs/google-fonts', '@vueuse/nuxt', '@pinia/nuxt', '@nuxt/image-edge', '@nuxtjs/color-mode'],
+	modules: [
+		'@nuxtjs/google-fonts',
+		'@vueuse/nuxt',
+		'@pinia/nuxt',
+		'@nuxt/image-edge',
+		'@nuxtjs/color-mode',
+		'nuxt-simple-robots'
+	],
 	googleFonts: {
 		display: 'swap',
 		families: {
 			Manrope: [400, 500, 600, 700]
 		}
+	},
+	robots: {
+		credits: false
 	}
 });
