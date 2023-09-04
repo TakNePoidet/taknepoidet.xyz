@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@nuxt/image-edge',
 		'@nuxtjs/color-mode',
+		'nuxt-simple-sitemap',
 		'nuxt-simple-robots',
 		'nuxt-yandex-metrika'
 	],
@@ -35,5 +36,8 @@ export default defineNuxtConfig({
 			accurateTrackBounce:true,
 			webvisor:true
 		}
+	},
+	sitemap: {
+		credits: false
 	}
 });
