@@ -31,13 +31,16 @@ export default defineNuxtConfig({
 		delay: 3000,
 		verification: process.env.VITE_YANDEX_VERIFICATION,
 		options: {
-			clickmap:true,
-			trackLinks:true,
-			accurateTrackBounce:true,
-			webvisor:true
+			clickmap: true,
+			trackLinks: true,
+			accurateTrackBounce: true,
+			webvisor: true
 		}
 	},
 	sitemap: {
 		credits: false
+	},
+	site: {
+		url: process.env.NUXT_PUBLIC_SITE_URL
 	}
 });
