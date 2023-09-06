@@ -93,7 +93,7 @@ const skills = computed<Skill[]>(() => [
 	</the-section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use 'assets/style/utility';
 
 .section-developments-skills {

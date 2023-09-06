@@ -17,7 +17,7 @@ const props = defineProps({
 const name = computed(() => props.icon?.name ?? undefined);
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .icon {
 	display: inline-block;
 	color: currentcolor;

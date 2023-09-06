@@ -57,7 +57,7 @@ watch(
 	</client-only>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use 'assets/style/utility';
 
 .theme-switcher {

@@ -55,7 +55,7 @@ watch(isOpen, (value) => {
 	</header>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use 'assets/style/utility';
 
 .header {

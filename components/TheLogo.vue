@@ -21,7 +21,7 @@ const { component, base } = useNamespace('logo');
 	</svg>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .logo {
 	color: var(--primary-text);
 	transition: color var(--transition-animation);

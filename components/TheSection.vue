@@ -22,7 +22,7 @@ const { base, component } = useNamespace('section');
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use 'assets/style/utility';
 
 .section {

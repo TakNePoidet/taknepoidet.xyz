@@ -152,7 +152,7 @@ watch(isVisible, () => {
 	check();
 });
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .picture {
 	$self: &;
 
@@ -162,7 +162,7 @@ watch(isVisible, () => {
 	background-size: 44px;
 	background-repeat: no-repeat;
 
-	& img {
+	& :deep(img) {
 		display: block;
 		filter: blur(0);
 		transition:
@@ -172,7 +172,7 @@ watch(isVisible, () => {
 	}
 
 	&#{$self}--is-loading {
-		& > img {
+		& > :deep(img) {
 			filter: blur(10px);
 			transform: scale(1.2);
 		}

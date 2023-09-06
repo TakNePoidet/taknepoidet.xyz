@@ -28,7 +28,7 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 	</the-section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use 'assets/style/utility';
 
 .section-hero {
@@ -61,7 +61,7 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 		& #{$self}__image {
 			margin: 0 calc(var(--ears) * -1);
 
-			img {
+			:deep(img) {
 				object-fit: cover;
 				width: 100%;
 				height: auto;
@@ -100,7 +100,7 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 				}
 			}
 			& #{$self}__image {
-				img {
+				:deep(img) {
 					border-radius: max(0px, min(#{utility.rem(8)}, (100% - var(--container)) * 9999)) / #{utility.rem(8)};
 				}
 			}

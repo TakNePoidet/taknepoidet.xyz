@@ -73,7 +73,7 @@ const show = throttle(() => {
 	</footer>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use 'assets/style/utility';
 
 .footer {
@@ -113,7 +113,7 @@ const show = throttle(() => {
 	}
 
 	picture,
-	picture img {
+	picture :deep(img) {
 		display: block;
 		width: #{utility.rem(128)};
 		height: #{utility.rem(128)};
@@ -128,7 +128,7 @@ const show = throttle(() => {
 		}
 
 		picture,
-		picture img {
+		picture :deep(img) {
 			display: block;
 			width: #{utility.rem(64)};
 			height: #{utility.rem(64)};

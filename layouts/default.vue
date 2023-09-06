@@ -11,7 +11,7 @@ import TheFooter from '~/components/TheFooter.vue';
 	<the-footer />
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 /* stylelint-disable-next-line selector-id-pattern */
 #__nuxt {
 	display: flex;
