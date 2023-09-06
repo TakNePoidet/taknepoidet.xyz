@@ -75,6 +75,7 @@ const show = throttle(() => {
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .footer {
 	position: relative;
@@ -119,7 +120,7 @@ const show = throttle(() => {
 		height: #{utility.rem(128)};
 	}
 
-	@media screen and (width <= 1424px) {
+	@include breakpoints.media-down('xl') {
 		padding-top: #{utility.rem(32)};
 		font-size: #{utility.rem(16)};
 

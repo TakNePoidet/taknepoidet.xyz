@@ -57,6 +57,7 @@ watch(isOpen, (value) => {
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .header {
 	$self: &;
@@ -91,7 +92,7 @@ watch(isOpen, (value) => {
 			height: #{utility.rem(24)};
 		}
 
-		@media screen and (width > 1424px) {
+		@include breakpoints.media-up('xl') {
 			display: none;
 		}
 	}
@@ -111,7 +112,7 @@ watch(isOpen, (value) => {
 		}
 	}
 
-	@media screen and (width <= 1424px) {
+	@include breakpoints.media-down('xl') {
 		& &__container {
 			margin: #{utility.rem(8)} auto;
 			padding: #{utility.rem(8)} 0;
@@ -124,7 +125,7 @@ watch(isOpen, (value) => {
 		}
 	}
 
-	@media screen and (width <= 1424px) {
+	@include breakpoints.media-down('xl') {
 		///height: var(--height);
 		margin-top: 0;
 		margin-bottom: 0;

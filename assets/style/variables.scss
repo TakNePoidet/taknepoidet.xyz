@@ -1,4 +1,5 @@
 @use 'utility';
+@use 'breakpoints';
 
 :root {
 	--brand-color: #0074e0;
@@ -21,14 +22,15 @@
 	--brand-laravel: #eb4432;
 	--brand-mysql: #016089;
 	--brand-html: #e44d26;
-	--ears: #{utility.rem(0)};
-	--container: #{utility.rem(1360)};
+	--ears: #{utility.rem(16)};
+	--container: 100%;
 	--transition-animation: 200ms cubic-bezier(0.42, 0, 0.19, 1);
 	--focus-visible: #ff9500;
 
-	@media screen and (width <= 1424px) {
-		--container: 800px;
-		--ears: #{utility.rem(16)};
+	@each $name, $breakpoint in breakpoints.$list {
+		@include breakpoints.media-up($name) {
+			--container: calc(#{$breakpoint} - var(--ears) * 2);
+		}
 	}
 }
 

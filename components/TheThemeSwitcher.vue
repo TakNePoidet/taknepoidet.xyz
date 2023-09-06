@@ -59,6 +59,7 @@ watch(
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .theme-switcher {
 	position: relative;
@@ -127,7 +128,7 @@ watch(
 		left: calc(#{utility.rem(4)} + (100% - #{utility.rem(4 * 2)}) / 3 * 2);
 	}
 
-	@media screen and (width <= 1424px) {
+	@include breakpoints.media-down('xl') {
 		display: inline-grid;
 		height: #{utility.rem(32)};
 		padding: #{utility.rem(2)};

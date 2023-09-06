@@ -24,6 +24,7 @@ const { base, component } = useNamespace('section');
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .section {
 	& &__container {
@@ -42,7 +43,7 @@ const { base, component } = useNamespace('section');
 		overflow-wrap: break-word;
 	}
 
-	@media screen and (width <= 1424px) {
+	@include breakpoints.media-down('xl') {
 		& &__title {
 			margin-bottom: #{utility.rem(32)};
 			font-size: #{utility.rem(32)};

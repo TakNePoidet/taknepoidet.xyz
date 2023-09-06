@@ -95,6 +95,7 @@ const skills = computed<Skill[]>(() => [
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .section-developments-skills {
 	margin-right: calc(var(--ears) * -1);
@@ -102,7 +103,7 @@ const skills = computed<Skill[]>(() => [
 	padding: #{utility.rem(128)} var(--ears);
 	background-color: var(--lighter-fill);
 
-	@media screen and (width <= 1424px) {
+	@include breakpoints.media-down('xl') {
 		padding: #{utility.rem(64)} var(--ears);
 	}
 }
@@ -178,7 +179,7 @@ const skills = computed<Skill[]>(() => [
 			}
 		}
 
-		@media screen and (width <= 1424px) {
+		@include breakpoints.media-down('xl') {
 			gap: #{utility.rem(8)};
 
 			li {

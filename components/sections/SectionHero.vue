@@ -30,6 +30,7 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .section-hero {
 	.section-hero-content {
@@ -60,12 +61,13 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 		}
 		& #{$self}__image {
 			margin: 0 calc(var(--ears) * -1);
+			pointer-events: none;
 
 			:deep(img) {
 				object-fit: cover;
 				width: 100%;
 				height: auto;
-				border-radius: #{utility.rem(32)};
+				border-radius: max(0px, min(#{utility.rem(32)}, (100% - var(--container)) * 9999)) / #{utility.rem(32)};
 				box-shadow:
 					0 #{utility.rem(2.2222)} #{utility.rem(42.2222)} rgb(0 0 0 / 10%),
 					0 #{utility.rem(0.8559)} #{utility.rem(13.4486)} rgb(0 0 0 / 6.07%),
@@ -86,7 +88,7 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 			}
 		}
 
-		@media screen and (width <= 1424px) {
+		@include breakpoints.media-down('xl') {
 			gap: #{utility.rem(16)};
 			& #{$self}__title {
 				gap: #{utility.rem(8)};

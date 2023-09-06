@@ -8,12 +8,13 @@
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .page {
 	display: grid;
 	gap: #{utility.rem(128)};
 
-	@media screen and (width <= 1424px) {
+	@include breakpoints.media-down('xl') {
 		gap: #{utility.rem(64)};
 	}
 }

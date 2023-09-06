@@ -84,6 +84,7 @@ const items = computed<ContactItem[]>(() => [
 
 <style scoped lang="scss">
 @use 'assets/style/utility';
+@use 'assets/style/breakpoints';
 
 .section-contacts {
 	margin: 0 auto;
@@ -208,7 +209,7 @@ const items = computed<ContactItem[]>(() => [
 			}
 		}
 
-		@media screen and (width <= 1424px) {
+		@include breakpoints.media-down('xl') {
 			display: block;
 			gap: #{utility.rem(0)};
 			justify-content: start;
