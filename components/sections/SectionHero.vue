@@ -10,14 +10,30 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 				<h1>Якин <u>Никита</u></h1>
 				<h2>Привет, меня зовут</h2>
 			</div>
-			<the-picture
-				preload
-				class="section-hero-content__image"
-				src="/images/page/home/me.jpg"
-				:width="2720"
-				:height="1802"
-				alt="Моя фотография"
-			/>
+			<div class="section-hero-content__gallery">
+				<the-picture
+					preload
+					src="/images/page/home/image.jpg"
+					:width="2529"
+					:height="1560"
+					alt="Моя фотография 1"
+				/><the-picture
+					preload
+					src="/images/page/home/IMG_9435.jpg"
+					:width="1248"
+					:height="1560"
+					alt="Моя фотография 2"
+				/><the-picture
+					preload
+					src="/images/page/home/IMG_6615.jpg"
+					:width="1248"
+					:height="1560"
+					alt="Моя фотография 3"
+				/>
+				<the-picture preload src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4" />
+				<the-picture preload src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5" />
+			</div>
+
 			<div class="section-hero-content__text">
 				<p>
 					Я&nbsp;&mdash; Fullstack-разработчик, люблю фотографировать, кататься на&nbsp;велосипеде и&nbsp;всякое-разное
@@ -59,20 +75,31 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 				line-height: 130%;
 			}
 		}
-		& #{$self}__image {
-			margin: 0 calc(var(--ears) * -1);
-			pointer-events: none;
+
+		& #{$self}__gallery {
+			display: grid;
+			grid-template-rows: repeat(#{utility.rem(770)});
+			grid-template-columns: repeat(3, 1fr);
+			gap: #{utility.rem(16)};
 
 			:deep(img) {
 				object-fit: cover;
 				width: 100%;
 				height: auto;
-				border-radius: max(0px, min(#{utility.rem(32)}, (100% - var(--container)) * 9999)) / #{utility.rem(32)};
-				box-shadow:
-					0 #{utility.rem(2.2222)} #{utility.rem(42.2222)} rgb(0 0 0 / 10%),
-					0 #{utility.rem(0.8559)} #{utility.rem(13.4486)} rgb(0 0 0 / 6.07%),
-					0 #{utility.rem(0.181)} #{utility.rem(3.4403)} rgb(0 0 0 / 3.93%);
-				aspect-ratio: 16/ 9;
+				border: 1px solid var(--base-border);
+				border-radius: #{utility.rem(16)};
+				aspect-ratio: 4/ 5;
+			}
+
+			:deep(picture) {
+				&:first-child {
+					grid-column-start: 1;
+					grid-column-end: 3;
+
+					img {
+						aspect-ratio: auto;
+					}
+				}
 			}
 		}
 		& #{$self}__text {
@@ -101,9 +128,11 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 					font-size: #{utility.rem(16)};
 				}
 			}
-			& #{$self}__image {
+			& #{$self}__gallery {
+				gap: #{utility.rem(4)};
+
 				:deep(img) {
-					border-radius: max(0px, min(#{utility.rem(8)}, (100% - var(--container)) * 9999)) / #{utility.rem(8)};
+					border-radius: #{utility.rem(4)};
 				}
 			}
 			& #{$self}__text {
