@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@nuxt/eslint-config": "^0.2.0",
-		"@nuxt/image-edge": "^1.0.0-rc.1-28224985.8423773",
+		"@nuxt/image": "^1.0.0-rc.1",
 		"@nuxtjs/color-mode": "^3.3.0",
 		"@taknepoidet-config/prettier": "^2.1.0",
 		"@taknepoidet-config/stylelint": "^2.1.1",
