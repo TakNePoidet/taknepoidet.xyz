@@ -22,10 +22,14 @@
 	--brand-laravel: #eb4432;
 	--brand-mysql: #016089;
 	--brand-html: #e44d26;
-	--ears: #{utility.rem(16)};
+	--ears: #{utility.rem(20)};
 	--container: 100%;
 	--transition-animation: 200ms cubic-bezier(0.42, 0, 0.19, 1);
 	--focus-visible: #ff9500;
+
+	@include breakpoints.media-down('xxl') {
+		--ears: #{utility.rem(16)};
+	}
 
 	@each $name, $breakpoint in breakpoints.$list {
 		@include breakpoints.media-up($name) {
