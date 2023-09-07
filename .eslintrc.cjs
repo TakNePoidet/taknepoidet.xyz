@@ -5,6 +5,7 @@ module.exports = {
 	rules: {
 		'max-len': 0,
 		'prettier/prettier': 'error',
-		'vue/no-multiple-template-root': 0
+		'vue/no-multiple-template-root': 0,
+		'@typescript-eslint/no-unused-vars': 1
 	}
 };
