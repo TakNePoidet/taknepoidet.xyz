@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 	imports: {
 		autoImport: false
 	},
+	// @ts-ignore
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@vueuse/nuxt',
@@ -15,7 +16,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode',
 		'nuxt-simple-sitemap',
 		'nuxt-simple-robots',
-		'nuxt-yandex-metrika'
+		'nuxt-yandex-metrika',
+		'@pinia/nuxt'
 	],
 	googleFonts: {
 		display: 'swap',
