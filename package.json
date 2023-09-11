@@ -53,6 +53,7 @@
 		]
 	},
 	"dependencies": {
+		"@nuxt/content": "^2.8.2",
 		"@nuxtjs/google-fonts": "^3.0.2",
 		"@pinia/nuxt": "^0.4.11",
 		"@vueuse/core": "^10.4.1",

@@ -17,7 +17,8 @@ export default defineNuxtConfig({
 		'nuxt-simple-sitemap',
 		'nuxt-simple-robots',
 		'nuxt-yandex-metrika',
-		'@pinia/nuxt'
+		'@pinia/nuxt',
+		'@nuxt/content'
 	],
 	googleFonts: {
 		display: 'swap',
