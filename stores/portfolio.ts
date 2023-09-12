@@ -45,7 +45,7 @@ export const enum Tag {
 
 const tags = new Map<Tag, ModelTag>();
 tags.set(Tag.HTML, { key: Tag.HTML, title: 'HTML', aliases: [Tag.Vue, Tag.Nuxt] });
-tags.set(Tag.Css, { key: Tag.Css, title: 'Css', aliases: [] });
+tags.set(Tag.Css, { key: Tag.Css, title: 'Css', aliases: [Tag.Nuxt, Tag.Vue, Tag.Scss] });
 tags.set(Tag.JavaScript, {
 	key: Tag.JavaScript,
 	title: 'JavaScript',
@@ -53,7 +53,7 @@ tags.set(Tag.JavaScript, {
 });
 tags.set(Tag.Ffmpeg, { key: Tag.Ffmpeg, title: 'Ffmpeg', aliases: [] });
 tags.set(Tag.PHP, { key: Tag.PHP, title: 'PHP', aliases: [Tag.Laravel, Tag.Bitrix, Tag.Wordpress] });
-tags.set(Tag.Scss, { key: Tag.Scss, title: 'Scss', aliases: [Tag.Css] });
+tags.set(Tag.Scss, { key: Tag.Scss, title: 'Scss', aliases: [Tag.Css, Tag.Nuxt, Tag.Vue] });
 tags.set(Tag.TypeScript, { key: Tag.TypeScript, title: 'TypeScript', aliases: [Tag.JavaScript] });
 tags.set(Tag.Vue, {
 	key: Tag.Vue,
