@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHost } from '~/composables/useHost';
 import Seo from '~/components/utils/Seo.vue';
-import ThePage from '~/components/ThePage.vue';
+import BasePage from '~/components/BasePage.vue';
 import SectionHero from '~/components/sections/SectionHero.vue';
 import SectionContacts from '~/components/sections/SectionContacts.vue';
 import { computed, definePageMeta, Page } from '#imports';
@@ -17,11 +17,11 @@ const canonical = computed(() => host.value);
 </script>
 
 <template>
-	<the-page>
+	<base-page>
 		<seo title="Якин Никита" description="Персональный сайт Якина Никиты" :cover="cover" :canonical="canonical" />
 		<section-hero />
 		<section-contacts />
 		<section-development-skills />
 		<section-portfolio />
-	</the-page>
+	</base-page>
 </template>

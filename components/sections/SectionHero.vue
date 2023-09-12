@@ -1,37 +1,49 @@
 <script setup lang="ts">
-import TheSection from '~/components/TheSection.vue';
-import ThePicture from '~/components/elements/ThePicture.vue';
+import BaseSection from '~/components/BaseSection.vue';
+import BasePicture from '~/components/elements/BasePicture.vue';
 </script>
 
 <template>
-	<the-section class="section-hero">
+	<base-section class="section-hero">
 		<div class="section-hero-content">
 			<div class="section-hero-content__title">
 				<h1>Якин <u>Никита</u></h1>
 				<h2>Привет, меня зовут</h2>
 			</div>
 			<div class="section-hero-content__gallery">
-				<the-picture
+				<base-picture
 					preload
 					src="/images/page/home/image.jpg"
 					:width="2529"
 					:height="1560"
 					alt="Моя фотография 1"
-				/><the-picture
+				/><base-picture
 					preload
 					src="/images/page/home/IMG_9435.jpg"
 					:width="1248"
 					:height="1560"
 					alt="Моя фотография 2"
-				/><the-picture
+				/><base-picture
 					preload
 					src="/images/page/home/IMG_6615.jpg"
 					:width="1248"
 					:height="1560"
 					alt="Моя фотография 3"
 				/>
-				<the-picture preload src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4" />
-				<the-picture preload src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5" />
+				<base-picture
+					preload
+					src="/images/page/home/IMG_9436.jpg"
+					:width="2529"
+					:height="1560"
+					alt="Моя фотография 4"
+				/>
+				<base-picture
+					preload
+					src="/images/page/home/IMG_9434.jpg"
+					:width="2529"
+					:height="1560"
+					alt="Моя фотография 5"
+				/>
 			</div>
 
 			<div class="section-hero-content__text">
@@ -41,7 +53,7 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 				<p>Тут вы&nbsp;можете больше узнать обо мне и&nbsp;увидеть некоторые мои проекты</p>
 			</div>
 		</div>
-	</the-section>
+	</base-section>
 </template>
 
 <style scoped lang="scss">

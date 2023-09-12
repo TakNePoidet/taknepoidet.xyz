@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import TheHeader from '~/components/TheHeader.vue';
-import TheFooter from '~/components/TheFooter.vue';
+import BaseHeader from '~/components/BaseHeader.vue';
+import BaseFooter from '~/components/BaseFooter.vue';
 </script>
 
 <template>
-	<the-header />
+	<base-header />
 	<main>
 		<nuxt-page />
 	</main>
-	<the-footer />
+	<base-footer />
 </template>
 
 <style scoped lang="scss">

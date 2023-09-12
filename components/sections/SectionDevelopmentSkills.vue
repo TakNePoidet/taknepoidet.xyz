@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import TheSection from '~/components/TheSection.vue';
-import TheIcon from '~/components/elements/TheIcon.vue';
+import BaseSection from '~/components/BaseSection.vue';
 import { computed, Page, useIsSmallDisplay } from '#imports';
 import { ModelTag, Tag, usePortfolioStore } from '~/stores/portfolio';
 import { storeToRefs } from 'pinia';
@@ -67,7 +66,7 @@ const skills = computed<Skill[]>(() => {
 </script>
 
 <template>
-	<the-section title="Навыки разработки" class="section-developments-skills">
+	<base-section title="Навыки разработки" class="section-developments-skills">
 		<div class="section-developments-skills-content">
 			<ul>
 				<li v-for="skill in skills" :key="skill.key" :data-key="skill.key">
@@ -79,7 +78,7 @@ const skills = computed<Skill[]>(() => {
 				</li>
 			</ul>
 		</div>
-	</the-section>
+	</base-section>
 </template>
 
 <style scoped lang="scss">

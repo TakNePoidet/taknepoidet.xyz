@@ -2,7 +2,7 @@
 import confetti from 'canvas-confetti';
 import { throttle } from '~/utils/throttle';
 import { useNamespace } from '~/composables/useNamespace';
-import ThePicture from '~/components/elements/ThePicture.vue';
+import BasePicture from '~/components/elements/BasePicture.vue';
 import { computed, useState } from '#imports';
 
 const { base, component } = useNamespace('footer');
@@ -58,7 +58,7 @@ const show = throttle(() => {
 		<div :class="[component('content')]">
 			<span>Якин <u>Никита</u></span>
 			<button type="button" @click="show">
-				<the-picture
+				<base-picture
 					v-for="(item, i) in memoji"
 					v-show="active === i"
 					:key="i"

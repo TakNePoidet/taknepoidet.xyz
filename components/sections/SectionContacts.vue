@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheSection from '~/components/TheSection.vue';
+import BaseSection from '~/components/BaseSection.vue';
 import { computed, useIsSmallDisplay } from '#imports';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 
@@ -46,7 +46,7 @@ const items = computed<ContactItem[]>(() => [
 </script>
 
 <template>
-	<the-section class="section-contacts" title="Найти меня или связаться со мной">
+	<base-section class="section-contacts" title="Найти меня или связаться со мной">
 		<ul class="section-contacts-content">
 			<li v-for="item in items" :key="item.key" :data-key="item.key">
 				<span>
@@ -55,7 +55,7 @@ const items = computed<ContactItem[]>(() => [
 				<nuxt-link rel="noopener noreferrer" target="_blank" :href="item.value">{{ item.name }}</nuxt-link>
 			</li>
 		</ul>
-	</the-section>
+	</base-section>
 </template>
 
 <style scoped lang="scss">

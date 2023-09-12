@@ -3,12 +3,10 @@ import { templateRef, useToggle } from '@vueuse/core';
 import { useSignal } from '~/composables/useSignal';
 import { useNamespace } from '~/composables/useNamespace';
 import SrOnly from '~/components/utils/SrOnly.vue';
-import { Icon24Bar } from '~/components/ui/icons';
-import TheThemeSwitcher from '~/components/TheThemeSwitcher.vue';
-import TheLogo from '~/components/TheLogo.vue';
-import TheIcon from '~/components/elements/TheIcon.vue';
-import { useFocusTrap, watch } from '#imports';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
+import BaseLogo from '~/components/BaseLogo.vue';
+import { useFocusTrap, watch } from '#imports';
+import ThemeSwitcher from '~/components/elements/ThemeSwitcher.vue';
 
 const ns = useNamespace('header');
 const [isOpen, setIsOpen] = useSignal(false);
@@ -45,12 +43,12 @@ watch(isOpen, (value) => {
 					<sr-only>Меню</sr-only>
 				</button>
 				<nuxt-link href="/" :class="[ns.component('logo')]">
-					<the-logo />
+					<base-logo />
 					<sr-only>TakNePoidet</sr-only>
 				</nuxt-link>
 			</div>
 			<div :class="[ns.component('content')]">
-				<the-theme-switcher :class="[ns.component('theme')]" />
+				<theme-switcher :class="[ns.component('theme')]" />
 			</div>
 		</div>
 	</header>

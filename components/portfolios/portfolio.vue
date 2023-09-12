@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
 import { ModelPortfolio } from '~/stores/portfolio';
-import ThePicture from '~/components/elements/ThePicture.vue';
+import BasePicture from '~/components/elements/BasePicture.vue';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import { Page } from '~/utils/page';
 
@@ -15,7 +15,7 @@ defineProps({
 
 <template>
 	<article :id="article.slug" class="portfolio">
-		<the-picture
+		<base-picture
 			v-if="article.cover"
 			class="portfolio__cover"
 			:alt="article.title"

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import TheSection from '~/components/TheSection.vue';
+import BaseSection from '~/components/BaseSection.vue';
 import { useAsyncData } from '#app';
 import { ModelPortfolio, usePortfolioStore } from '~/stores/portfolio';
 import { storeToRefs } from 'pinia';
 import { computed, Page } from '#imports';
-import ThePicture from '~/components/elements/ThePicture.vue';
+import BasePicture from '~/components/elements/BasePicture.vue';
 import SrOnly from '~/components/utils/SrOnly.vue';
 
 const portfolioStore = usePortfolioStore();
@@ -30,11 +30,11 @@ const openSource = computed<ModelPortfolio[]>(() => {
 </script>
 
 <template>
-	<the-section title="Работы, о которых хочется рассказать" :badge="portfolios.length" class="section-portfolio">
+	<base-section title="Работы, о которых хочется рассказать" :badge="portfolios.length" class="section-portfolio">
 		<div class="section-portfolio-content">
 			<div v-for="item in favorites" :key="item._id" class="portfolio-preview">
 				<nuxt-link :href="item.permalink" target="_blank" :title="item.title">
-					<the-picture v-if="item.cover" :alt="item.title" :height="628" :width="1200" :src="item.cover" />
+					<base-picture v-if="item.cover" :alt="item.title" :height="628" :width="1200" :src="item.cover" />
 					<sr-only>{{ item.title }}</sr-only>
 				</nuxt-link>
 			</div>
@@ -67,7 +67,7 @@ const openSource = computed<ModelPortfolio[]>(() => {
 				</nuxt-link>
 			</div>
 		</div>
-	</the-section>
+	</base-section>
 </template>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, definePageMeta, useRoute } from '#imports';
-import ThePage from '~/components/ThePage.vue';
-import TheSection from '~/components/TheSection.vue';
+import BasePage from '~/components/BasePage.vue';
+import BaseSection from '~/components/BaseSection.vue';
 import YearsGroupPortfolios from '~/components/portfolios/portfolios-years-group.vue';
 import Seo from '~/components/utils/Seo.vue';
 import { Page } from '~/utils/page';
@@ -80,9 +80,9 @@ const title = computed(() => {
 </script>
 
 <template>
-	<the-page>
+	<base-page>
 		<seo :title="title" />
-		<the-section :title="title" :badge="filtered.length" title-tag="h1">
+		<base-section :title="title" :badge="filtered.length" title-tag="h1">
 			<div class="section-content-portfolios">
 				<template v-if="filtered.length > 6">
 					<years-group-portfolios
@@ -95,8 +95,8 @@ const title = computed(() => {
 				</template>
 				<listing v-else :items="filtered" />
 			</div>
-		</the-section>
-	</the-page>
+		</base-section>
+	</base-page>
 </template>
 
 <style scoped lang="scss">
