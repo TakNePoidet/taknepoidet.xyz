@@ -1,35 +1,14 @@
 <script setup lang="ts">
-import {
-	Icon,
-	Icon24Css,
-	Icon24Html,
-	Icon24Javascript,
-	Icon24Laravel,
-	Icon24Nuxt,
-	Icon24Php,
-	Icon24Scss,
-	Icon24Typescript,
-	Icon24Vue,
-	Icon32Css,
-	Icon32Html,
-	Icon32Javascript,
-	Icon32Laravel,
-	Icon32Nuxt,
-	Icon32Php,
-	Icon32Scss,
-	Icon32Typescript,
-	Icon32Vue
-} from '~/components/ui/icons';
 import TheSection from '~/components/TheSection.vue';
 import TheIcon from '~/components/elements/TheIcon.vue';
 import { computed, Page, useIsSmallDisplay } from '#imports';
 import { ModelTag, Tag, usePortfolioStore } from '~/stores/portfolio';
 import { storeToRefs } from 'pinia';
+import BaseIcon from '~/components/elements/BaseIcon.vue';
 
 interface Skill {
 	key: string;
 	name: string;
-	icon: Icon;
 	tag?: ModelTag;
 }
 const isSmallDisplay = useIsSmallDisplay();
@@ -42,48 +21,39 @@ const skills = computed<Skill[]>(() => {
 	return [
 		{
 			key: 'html',
-			name: 'HTML',
-			icon: isSmallDisplay ? Icon24Html : Icon32Html
+			name: 'HTML'
 		},
 		{
 			key: 'css',
-			name: 'Css',
-			icon: isSmallDisplay ? Icon24Css : Icon32Css
+			name: 'Css'
 		},
 		{
 			key: 'javascript',
-			name: 'JavaScript',
-			icon: isSmallDisplay ? Icon24Javascript : Icon32Javascript
+			name: 'JavaScript'
 		},
 		{
 			key: 'nuxt',
-			name: 'Nuxt',
-			icon: isSmallDisplay ? Icon24Nuxt : Icon32Nuxt
+			name: 'Nuxt'
 		},
 		{
 			key: 'vue',
-			name: 'Vue',
-			icon: isSmallDisplay ? Icon24Vue : Icon32Vue
+			name: 'Vue'
 		},
 		{
 			key: 'scss',
-			name: 'Scss',
-			icon: isSmallDisplay ? Icon24Scss : Icon32Scss
+			name: 'Scss'
 		},
 		{
 			key: 'typescript',
-			name: 'TypeScript',
-			icon: isSmallDisplay ? Icon24Typescript : Icon32Typescript
+			name: 'TypeScript'
 		},
 		{
 			key: 'php',
-			name: 'PHP',
-			icon: isSmallDisplay ? Icon24Php : Icon32Php
+			name: 'PHP'
 		},
 		{
 			key: 'laravel',
-			name: 'Laravel',
-			icon: isSmallDisplay ? Icon24Laravel : Icon32Laravel
+			name: 'Laravel'
 		}
 	].map((skill) => {
 		const tag = tags.value.get(skill.key as Tag);
@@ -105,7 +75,7 @@ const skills = computed<Skill[]>(() => {
 						skill.name
 					}}</nuxt-link>
 					<span v-else>{{ skill.name }}</span>
-					<the-icon :icon="skill.icon" />
+					<base-icon :name="skill.key" />
 				</li>
 			</ul>
 		</div>

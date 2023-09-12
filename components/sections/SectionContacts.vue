@@ -1,27 +1,9 @@
 <script setup lang="ts">
-import {
-	Icon,
-	Icon24Email,
-	Icon24Github,
-	Icon24Instagram,
-	Icon24Phone,
-	Icon24Telegram,
-	Icon24Vk,
-	Icon24Whatsapp,
-	Icon32Email,
-	Icon32Github,
-	Icon32Instagram,
-	Icon32Phone,
-	Icon32Telegram,
-	Icon32Vk,
-	Icon32Whatsapp
-} from '~/components/ui/icons';
 import TheSection from '~/components/TheSection.vue';
-import TheIcon from '~/components/elements/TheIcon.vue';
 import { computed, useIsSmallDisplay } from '#imports';
+import BaseIcon from '~/components/elements/BaseIcon.vue';
 
 interface ContactItem {
-	icon: Icon;
 	key: string;
 	name: string;
 	value: string;
@@ -29,42 +11,36 @@ interface ContactItem {
 
 const isSmallDisplay = useIsSmallDisplay();
 const items = computed<ContactItem[]>(() => [
-	{ key: 'vk', name: 'ВКонтакте', value: 'https://vk.com/taknepoidet', icon: isSmallDisplay ? Icon24Vk : Icon32Vk },
+	{ key: 'vk', name: 'ВКонтакте', value: 'https://vk.com/taknepoidet' },
 	{
 		key: 'whatsapp',
 		name: 'WhatsApp',
-		value: 'https://wa.me/+79177747838',
-		icon: isSmallDisplay ? Icon24Whatsapp : Icon32Whatsapp
+		value: 'https://wa.me/+79177747838'
 	},
 	{
 		key: 'telegram',
 		name: 'Telegram',
-		value: 'https://t.me/TakNePoidet',
-		icon: isSmallDisplay ? Icon24Telegram : Icon32Telegram
+		value: 'https://t.me/TakNePoidet'
 	},
 	{
 		key: 'phone',
 		name: 'Телефон',
-		value: 'tel:+79177747838',
-		icon: isSmallDisplay ? Icon24Phone : Icon32Phone
+		value: 'tel:+79177747838'
 	},
 	{
 		key: 'github',
 		name: 'GitHub',
-		value: 'https://github.com/TakNePoidet',
-		icon: isSmallDisplay ? Icon24Github : Icon32Github
+		value: 'https://github.com/TakNePoidet'
 	},
 	{
 		key: 'instagram',
 		name: 'Фотографии',
-		value: 'https://www.instagram.com/tak_ne_poideet',
-		icon: isSmallDisplay ? Icon24Instagram : Icon32Instagram
+		value: 'https://www.instagram.com/tak_ne_poideet'
 	},
 	{
 		key: 'email',
 		name: 'Почта',
-		value: 'mailto:yakin95@gmail.com',
-		icon: isSmallDisplay ? Icon24Email : Icon32Email
+		value: 'mailto:yakin95@gmail.com'
 	}
 ]);
 </script>
@@ -74,7 +50,7 @@ const items = computed<ContactItem[]>(() => [
 		<ul class="section-contacts-content">
 			<li v-for="item in items" :key="item.key" :data-key="item.key">
 				<span>
-					<the-icon :icon="item.icon" />
+					<base-icon :name="item.key" />
 				</span>
 				<nuxt-link rel="noopener noreferrer" target="_blank" :href="item.value">{{ item.name }}</nuxt-link>
 			</li>

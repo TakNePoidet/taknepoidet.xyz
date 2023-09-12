@@ -26,6 +26,7 @@ defineProps({
 			| 'link'
 			| 'arrow-badge-up'
 			| 'arrow-badge-down'
+			| string
 		>,
 		required: true
 	}

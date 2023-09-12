@@ -8,6 +8,7 @@ import TheThemeSwitcher from '~/components/TheThemeSwitcher.vue';
 import TheLogo from '~/components/TheLogo.vue';
 import TheIcon from '~/components/elements/TheIcon.vue';
 import { useFocusTrap, watch } from '#imports';
+import BaseIcon from '~/components/elements/BaseIcon.vue';
 
 const ns = useNamespace('header');
 const [isOpen, setIsOpen] = useSignal(false);
@@ -40,7 +41,7 @@ watch(isOpen, (value) => {
 		<div :class="[ns.component('container')]">
 			<div :class="[ns.component('controller')]">
 				<button type="button" :class="[ns.component('bar')]" @click.stop="toggle()">
-					<the-icon :icon="Icon24Bar" style="width: 44px" />
+					<base-icon name="bar" style="width: 44px" />
 					<sr-only>Меню</sr-only>
 				</button>
 				<nuxt-link href="/" :class="[ns.component('logo')]">
