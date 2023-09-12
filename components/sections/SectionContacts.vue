@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BaseSection from '~/components/BaseSection.vue';
-import { computed, useIsSmallDisplay } from '#imports';
+import { computed } from '#imports';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 
 interface ContactItem {
@@ -9,7 +9,6 @@ interface ContactItem {
 	value: string;
 }
 
-const isSmallDisplay = useIsSmallDisplay();
 const items = computed<ContactItem[]>(() => [
 	{ key: 'vk', name: 'ВКонтакте', value: 'https://vk.com/taknepoidet' },
 	{
