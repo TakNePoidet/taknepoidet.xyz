@@ -122,7 +122,7 @@ const show = throttle(() => {
 
 	@include breakpoints.media-down('xl') {
 		padding-top: #{utility.rem(32)};
-		font-size: #{utility.rem(16)};
+		font-size: #{utility.rem(20)};
 
 		& &__content {
 			gap: #{utility.rem(8)};
@@ -131,8 +131,8 @@ const show = throttle(() => {
 		picture,
 		picture :deep(img) {
 			display: block;
-			width: #{utility.rem(64)};
-			height: #{utility.rem(64)};
+			width: #{utility.rem(100)};
+			height: #{utility.rem(100)};
 		}
 	}
 }
