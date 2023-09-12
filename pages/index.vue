@@ -6,6 +6,7 @@ import TheDevelopmentSkills from '~/components/sections/TheDevelopmentSkills.vue
 import SectionHero from '~/components/sections/SectionHero.vue';
 import SectionContacts from '~/components/sections/SectionContacts.vue';
 import { computed, definePageMeta, Page } from '#imports';
+import SectionPortfolio from '~/components/sections/SectionPortfolio.vue';
 
 definePageMeta({
 	name: Page.Home
@@ -21,5 +22,6 @@ const canonical = computed(() => host.value);
 		<section-hero />
 		<section-contacts />
 		<the-development-skills />
+		<section-portfolio />
 	</the-page>
 </template>
