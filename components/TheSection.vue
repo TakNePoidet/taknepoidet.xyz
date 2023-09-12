@@ -6,6 +6,16 @@ defineProps({
 	title: {
 		type: String as PropType<string>,
 		default: undefined
+	},
+	titleTag: {
+		type: String as PropType<keyof HTMLElementTagNameMap>,
+		default() {
+			return 'h2';
+		}
+	},
+	badge: {
+		type: [String, Number] as PropType<string | number>,
+		default: undefined
 	}
 });
 const { base, component } = useNamespace('section');
@@ -14,7 +24,11 @@ const { base, component } = useNamespace('section');
 <template>
 	<section :class="[base()]" v-bind="$attrs">
 		<div :class="[component('container')]">
-			<div v-if="title" :class="[component('title')]">{{ title }}</div>
+			<component :is="titleTag" v-if="title" :class="[component('title')]">
+				{{ title }}
+				<sup v-if="badge">{{ badge }}</sup>
+			</component>
+
 			<div :class="[component('content')]">
 				<slot />
 			</div>
@@ -41,6 +55,13 @@ const { base, component } = useNamespace('section');
 		text-align: center;
 		text-wrap: balance;
 		overflow-wrap: break-word;
+
+		sup {
+			vertical-align: super;
+			color: var(--brand-color);
+			font-weight: 600;
+			font-size: 0.6em;
+		}
 	}
 
 	@include breakpoints.media-down('xl') {
