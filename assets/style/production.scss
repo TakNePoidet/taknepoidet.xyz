@@ -3,6 +3,6 @@ html {
 	//font-size: clamp(16px, min(1.2vw, 3vh), 20px) !important;
 
 	@media screen and (width <= 1200px) {
-		font-size: clamp(16px, min(5vw, 3vh), 40px) !important;
+		font-size: clamp(16px, min(2.5vw, 3vh), 40px) !important;
 	}
 }
