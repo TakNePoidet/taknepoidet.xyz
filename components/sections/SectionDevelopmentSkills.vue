@@ -146,7 +146,7 @@ const skills = computed<Skill[]>(() => {
 		color: var(--white);
 
 		@include breakpoints.media-down('xxl') {
-			margin-bottom: #{utility.rem(16)};
+			margin-bottom: #{utility.rem(24)};
 		}
 	}
 
