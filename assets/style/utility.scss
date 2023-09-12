@@ -3,3 +3,29 @@
 @function rem($value) {
 	@return starter.to-rem($value, 16);
 }
+
+@mixin has-hover() {
+	@media (hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
+
+	@media (hover: none) {
+		&:active {
+			@content;
+		}
+	}
+}
+
+@mixin has-p3() {
+	@media (color-gamut: p3) {
+		@supports (color: oklch(58.09% 0.23 254.84)) {
+			@content;
+		}
+	}
+}
+
+@function column($size, $gutter) {
+	@return calc((var(--container) + #{$gutter}) * #{$size} - #{$gutter});
+}
