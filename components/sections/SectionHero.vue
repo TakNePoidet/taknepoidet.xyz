@@ -18,32 +18,13 @@ import BasePicture from '~/components/elements/BasePicture.vue';
 					:height="1560"
 					alt="Моя фотография 1"
 				/><base-picture
-					preload
 					src="/images/page/home/IMG_9435.jpg"
 					:width="1248"
 					:height="1560"
 					alt="Моя фотография 2"
-				/><base-picture
-					preload
-					src="/images/page/home/IMG_6615.jpg"
-					:width="1248"
-					:height="1560"
-					alt="Моя фотография 3"
-				/>
-				<base-picture
-					preload
-					src="/images/page/home/IMG_9436.jpg"
-					:width="2529"
-					:height="1560"
-					alt="Моя фотография 4"
-				/>
-				<base-picture
-					preload
-					src="/images/page/home/IMG_9434.jpg"
-					:width="2529"
-					:height="1560"
-					alt="Моя фотография 5"
-				/>
+				/><base-picture src="/images/page/home/IMG_6615.jpg" :width="1248" :height="1560" alt="Моя фотография 3" />
+				<base-picture src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4" />
+				<base-picture src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5" />
 			</div>
 
 			<div class="section-hero-content__text">
