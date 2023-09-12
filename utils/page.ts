@@ -1,3 +1,5 @@
 export const enum Page {
-	Home = 'home'
+	Home = 'home',
+	PortfolioListing = 'portfolio-listing',
+	PortfolioListingTag = 'portfolio-listing-tag'
 }

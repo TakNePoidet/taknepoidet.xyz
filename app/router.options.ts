@@ -1,7 +1,18 @@
 import type { RouterOptions } from '@nuxt/schema';
 import { useNuxtApp } from '#imports';
+import { Page } from '~/utils/page';
 
 export default <RouterOptions>{
+	routes(_routes) {
+		return [
+			..._routes,
+			{
+				name: Page.PortfolioListingTag,
+				path: '/portfolio/:tag([a-z-]+)',
+				component: () => import('~/pages/portfolio.vue')
+			}
+		];
+	},
 	scrollBehavior(to, from, savedPosition) {
 		const nuxtApp = useNuxtApp();
 
