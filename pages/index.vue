@@ -2,11 +2,11 @@
 import { useHost } from '~/composables/useHost';
 import Seo from '~/components/utils/Seo.vue';
 import ThePage from '~/components/ThePage.vue';
-import TheDevelopmentSkills from '~/components/sections/TheDevelopmentSkills.vue';
 import SectionHero from '~/components/sections/SectionHero.vue';
 import SectionContacts from '~/components/sections/SectionContacts.vue';
 import { computed, definePageMeta, Page } from '#imports';
 import SectionPortfolio from '~/components/sections/SectionPortfolio.vue';
+import SectionDevelopmentSkills from '~/components/sections/SectionDevelopmentSkills.vue';
 
 definePageMeta({
 	name: Page.Home
@@ -21,7 +21,7 @@ const canonical = computed(() => host.value);
 		<seo title="Якин Никита" description="Персональный сайт Якина Никиты" :cover="cover" :canonical="canonical" />
 		<section-hero />
 		<section-contacts />
-		<the-development-skills />
+		<section-development-skills />
 		<section-portfolio />
 	</the-page>
 </template>
