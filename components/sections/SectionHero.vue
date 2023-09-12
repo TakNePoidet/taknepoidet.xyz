@@ -121,27 +121,34 @@ import ThePicture from '~/components/elements/ThePicture.vue';
 				gap: #{utility.rem(8)};
 
 				h1 {
-					font-size: #{utility.rem(32)};
+					font-size: #{utility.rem(48)};
 				}
 
 				h2 {
-					font-size: #{utility.rem(16)};
+					font-size: #{utility.rem(20)};
 				}
 			}
 			& #{$self}__gallery {
+				grid-template-columns: repeat(2, 1fr);
 				gap: #{utility.rem(4)};
 
 				:deep(img) {
 					border-radius: #{utility.rem(4)};
 				}
+
+				:deep(picture) {
+					&:first-child {
+						grid-column: 1/-1;
+					}
+				}
 			}
 			& #{$self}__text {
 				p {
-					font-size: #{utility.rem(16)};
+					font-size: #{utility.rem(20)};
 				}
 
 				p + p {
-					margin-top: #{utility.rem(20.8)};
+					margin-top: #{utility.rem(26)};
 				}
 			}
 		}

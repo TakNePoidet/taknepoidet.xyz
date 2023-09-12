@@ -128,15 +128,25 @@ watch(
 		left: calc(#{utility.rem(4)} + (100% - #{utility.rem(4 * 2)}) / 3 * 2);
 	}
 
+	@include breakpoints.media-down('xxl') {
+		height: auto;
+
+		button {
+			padding: #{utility.rem(8)} #{utility.rem(12)};
+			font-size: #{utility.rem(24)};
+		}
+	}
+
 	@include breakpoints.media-down('xl') {
 		display: inline-grid;
-		height: #{utility.rem(32)};
+		width: 100%;
+		height: auto;
 		padding: #{utility.rem(2)};
 		border-width: #{utility.rem(1)};
 
 		button {
-			padding: 0 #{utility.rem(4)};
-			font-size: #{utility.rem(16)};
+			padding: #{utility.rem(6)} #{utility.rem(12)};
+			font-size: #{utility.rem(20)};
 		}
 
 		& &__indicator {

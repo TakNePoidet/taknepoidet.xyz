@@ -66,8 +66,8 @@ const { base, component } = useNamespace('section');
 
 	@include breakpoints.media-down('xl') {
 		& &__title {
-			margin-bottom: #{utility.rem(32)};
-			font-size: #{utility.rem(32)};
+			margin-bottom: #{utility.rem(28)};
+			font-size: #{utility.rem(28)};
 		}
 	}
 }

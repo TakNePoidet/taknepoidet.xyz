@@ -99,9 +99,9 @@ const items = computed<ContactItem[]>(() => [
 		padding: 0;
 		list-style: none;
 
-		@media screen and (width > 1424px) {
-			padding: 0 5%;
-		}
+		//@media screen and (width > 1424px) {
+		//	padding: 0 5%;
+		//}
 
 		li {
 			position: relative;
@@ -215,20 +215,21 @@ const items = computed<ContactItem[]>(() => [
 			justify-content: start;
 
 			li {
+				gap: #{utility.rem(12)};
 				justify-content: flex-start;
-				font-size: #{utility.rem(16)};
+				font-size: #{utility.rem(20)};
 
 				&:not(:first-child) {
-					padding: #{utility.rem(16)} 0;
+					padding: #{utility.rem(12)} 0;
 					border-top: 1px solid var(--base-border);
 				}
 
 				&:first-child {
-					padding-bottom: #{utility.rem(16)};
+					padding-bottom: #{utility.rem(12)};
 				}
 
 				&:last-child {
-					padding-top: #{utility.rem(16)};
+					padding-top: #{utility.rem(12)};
 				}
 
 				span {
@@ -236,8 +237,8 @@ const items = computed<ContactItem[]>(() => [
 					height: #{utility.rem(40)};
 
 					.icon {
-						width: #{utility.rem(24)};
-						height: #{utility.rem(24)};
+						width: #{utility.rem(20)};
+						height: #{utility.rem(20)};
 					}
 				}
 			}

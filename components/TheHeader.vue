@@ -88,8 +88,8 @@ watch(isOpen, (value) => {
 		appearance: none;
 
 		.icon {
-			width: #{utility.rem(24)};
-			height: #{utility.rem(24)};
+			width: #{utility.rem(32)};
+			height: #{utility.rem(32)};
 		}
 
 		@include breakpoints.media-up('xl') {
@@ -114,13 +114,13 @@ watch(isOpen, (value) => {
 
 	@include breakpoints.media-down('xl') {
 		& &__container {
-			margin: #{utility.rem(8)} auto;
-			padding: #{utility.rem(8)} 0;
+			margin: #{utility.rem(12)} auto;
+			padding: #{utility.rem(12)} 0;
 		}
 
 		& &__logo {
 			.logo {
-				height: #{utility.rem(32)};
+				height: #{utility.rem(48)};
 			}
 		}
 	}
@@ -138,7 +138,7 @@ watch(isOpen, (value) => {
 
 		& &__controller {
 			display: flex;
-			gap: #{utility.rem(4)};
+			gap: #{utility.rem(12)};
 			justify-content: flex-start;
 			align-items: center;
 		}
