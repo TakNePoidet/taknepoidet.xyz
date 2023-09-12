@@ -108,13 +108,18 @@ const skills = computed<Skill[]>(() => {
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		gap: #{utility.rem(32)};
+		gap: #{utility.rem(24)};
 		justify-content: center;
-		padding: 0;
+		padding: 0 15%;
 		list-style: none;
+
+		@include breakpoints.media-up('xxl') {
+			padding: 0 15%;
+		}
 
 		@include breakpoints.media-down('xxl') {
 			gap: #{utility.rem(16)};
+			padding: 0;
 		}
 
 		li {

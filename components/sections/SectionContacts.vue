@@ -75,9 +75,9 @@ const items = computed<ContactItem[]>(() => [
 		padding: 0;
 		list-style: none;
 
-		//@media screen and (width > 1424px) {
-		//	padding: 0 5%;
-		//}
+		@include breakpoints.media-up('xxl') {
+			padding: 0 15%;
+		}
 
 		li {
 			position: relative;
