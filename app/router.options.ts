@@ -9,11 +9,15 @@ export default <RouterOptions>{
 			return new Promise((resolve) => {
 				nuxtApp.hooks.hookOnce('page:finish', () => {
 					setTimeout(() => {
+						const $header = document.getElementById('header');
+						const { height } = $header!.getBoundingClientRect();
+
 						if (to.hash || savedPosition) {
 							if (to.hash) {
 								resolve({
 									el: to.hash,
 									left: 0,
+									top: height,
 									behavior: 'smooth'
 								});
 							} else {

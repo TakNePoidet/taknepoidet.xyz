@@ -36,7 +36,7 @@ watch(isOpen, (value) => {
 </script>
 
 <template>
-	<header ref="$el" :class="[ns.base(), ns.is('open', isOpen)]">
+	<header id="header" ref="$el" :class="[ns.base(), ns.is('open', isOpen)]">
 		<div :class="[ns.component('container')]">
 			<div :class="[ns.component('controller')]">
 				<button type="button" :class="[ns.component('bar')]" @click.stop="toggle()">
