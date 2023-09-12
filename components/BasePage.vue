@@ -13,6 +13,9 @@
 .page {
 	display: grid;
 	gap: #{utility.rem(128)};
+	overflow-x: hidden;
+	margin: #{utility.rem(16)} calc(var(--ears) * -1);
+	padding: 0 var(--ears);
 
 	@include breakpoints.media-down('xl') {
 		gap: #{utility.rem(64)};
