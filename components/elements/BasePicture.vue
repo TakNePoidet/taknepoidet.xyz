@@ -1,32 +1,35 @@
 <template>
-	<picture :class="[ns.base(), ns.is('loading', isLoading)]">
-		<source
-			v-for="(item, i) in sources"
-			:key="i"
-			:srcset="item.srcset"
-			:type="item.type"
-			:sizes="isVisible ? item.sizes : undefined"
-		/>
-
-		<img
-			ref="$element"
-			:src="placeholder"
-			:width="width"
-			:height="height"
-			:alt="alt"
-			:data-loading="isLoading"
-			:loading="preload ? 'eager' : 'lazy'"
-			@load="onLoad"
-		/>
-		<template v-if="preload">
-			<Link
-				rel="preload"
-				as="image"
-				:imagesizes="preloadSources.imagesizes"
-				:imagesrcset="preloadSources.imagesrcset"
+	<div :class="[ns.base(), ns.is('loaded', loaded), ns.is('preload', preload)]">
+		<picture>
+			<source
+				v-for="(item, i) in sources"
+				:key="i"
+				:srcset="item.srcset"
+				:type="item.type"
+				:sizes="isVisible ? item.sizes : undefined"
 			/>
-		</template>
-	</picture>
+
+			<img
+				ref="$element"
+				:src="placeholder"
+				:width="width"
+				:height="height"
+				:alt="alt"
+				:data-src="src"
+				:data-loading="loaded"
+				:loading="preload ? 'eager' : 'lazy'"
+				@load="onLoad"
+			/>
+			<template v-if="preload">
+				<Link
+					rel="preload"
+					as="image"
+					:imagesizes="preloadSources.imagesizes"
+					:imagesrcset="preloadSources.imagesrcset"
+				/>
+			</template>
+		</picture>
+	</div>
 </template>
 
 <script lang="ts" setup>
@@ -81,18 +84,18 @@ const format = computed(() => (originalFormat.value === 'svg' ? 'svg' : 'webp'))
 
 function onLoad() {
 	if (isVisible.value) {
-		setIsLoading(false);
+		setLoaded(true);
 	}
 }
 
 const $img = useNuxtImage();
 const $element = templateRef<HTMLImageElement>('$element');
-const [isLoading, setIsLoading] = useSignal(true);
+const [loaded, setLoaded] = useSignal(false);
 let isVisible: Ref<boolean>;
 
 if (props.preload) {
 	isVisible = readonly(ref(true));
-	setIsLoading(false);
+	setLoaded(true);
 } else {
 	isVisible = useVisible($element, {
 		once: true
@@ -100,7 +103,7 @@ if (props.preload) {
 }
 
 const placeholder = computed(() =>
-	$img(props.src, { quality: 1, width: 100, height: 100, fit: 'cover', format: 'webp' })
+	$img(props.src, { quality: 90, width: 100, height: 100, fit: 'cover', format: 'webp' })
 );
 
 type Source = { srcset: string; src?: string; type?: string; sizes?: string };
@@ -134,7 +137,7 @@ const preloadSources = computed(() => {
 function check() {
 	nextTick(() => {
 		if (isVisible.value && $element.value && $element.value.complete) {
-			setIsLoading(false);
+			setLoaded(true);
 		}
 	});
 }
@@ -142,7 +145,7 @@ function check() {
 watch(
 	() => props.src,
 	() => {
-		setIsLoading(true);
+		setLoaded(true);
 	}
 );
 onMounted(() => {
@@ -158,24 +161,35 @@ watch(isVisible, () => {
 
 	display: block;
 	overflow: hidden;
-	background-position: center;
-	background-size: 44px;
-	background-repeat: no-repeat;
 
-	& :deep(img) {
+	img {
 		display: block;
-		filter: blur(0);
-		transition:
-			filter var(--transition-animation),
-			transform var(--transition-animation);
-		transform: scale(1);
 	}
 
-	&#{$self}--is-loading {
-		& > :deep(img) {
-			filter: blur(10px);
-			transform: scale(1.2);
+	&:not(#{$self}--is-preload) {
+		opacity: 0;
+		&#{$self}--is-loaded {
+			animation: appear 500ms forwards;
 		}
+	}
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+		filter: blur(20px);
+		scale: 1.1;
+	}
+
+	10% {
+		opacity: 1;
+		filter: blur(10px);
+	}
+
+	100% {
+		opacity: 1;
+		filter: blur(0);
+		scale: 1;
 	}
 }
 </style>

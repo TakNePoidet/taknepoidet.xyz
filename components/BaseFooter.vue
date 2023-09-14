@@ -113,8 +113,8 @@ const show = throttle(() => {
 		}
 	}
 
-	picture,
-	picture :deep(img) {
+	:deep(picture),
+	:deep(picture) img {
 		display: block;
 		width: #{utility.rem(128)};
 		height: #{utility.rem(128)};
@@ -128,8 +128,8 @@ const show = throttle(() => {
 			gap: #{utility.rem(8)};
 		}
 
-		picture,
-		picture :deep(img) {
+		:deep(picture),
+		:deep(picture) img {
 			display: block;
 			width: #{utility.rem(100)};
 			height: #{utility.rem(100)};

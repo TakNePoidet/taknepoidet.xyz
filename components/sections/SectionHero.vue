@@ -75,16 +75,17 @@ import BasePicture from '~/components/elements/BasePicture.vue';
 			grid-template-columns: repeat(3, 1fr);
 			gap: #{utility.rem(16)};
 
-			:deep(img) {
-				object-fit: cover;
-				width: 100%;
-				height: auto;
-				border: 1px solid var(--base-border);
+			:deep(.picture) {
 				border-radius: #{utility.rem(16)};
-				aspect-ratio: 4/ 5;
-			}
 
-			:deep(picture) {
+				img {
+					object-fit: cover;
+					width: 100%;
+					height: auto;
+					border: 1px solid var(--base-border);
+					aspect-ratio: 4/ 5;
+				}
+
 				&:first-child {
 					grid-column-start: 1;
 					grid-column-end: 3;
@@ -125,11 +126,9 @@ import BasePicture from '~/components/elements/BasePicture.vue';
 				grid-template-columns: repeat(2, 1fr);
 				gap: #{utility.rem(4)};
 
-				:deep(img) {
+				:deep(.picture) {
 					border-radius: #{utility.rem(4)};
-				}
 
-				:deep(picture) {
 					&:first-child {
 						grid-column: 1/-1;
 					}
