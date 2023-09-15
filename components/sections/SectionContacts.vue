@@ -2,6 +2,7 @@
 import BaseSection from '~/components/BaseSection.vue';
 import { computed } from '#imports';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
+import MotionScroll from '~/components/utils/MotionScroll.vue';
 
 interface ContactItem {
 	key: string;
@@ -45,16 +46,18 @@ const items = computed<ContactItem[]>(() => [
 </script>
 
 <template>
-	<base-section class="section-contacts" title="Найти меня или связаться со мной">
-		<ul class="section-contacts-content">
-			<li v-for="item in items" :key="item.key" :data-key="item.key">
-				<span>
-					<base-icon :name="item.key" />
-				</span>
-				<nuxt-link rel="noopener noreferrer" target="_blank" :href="item.value">{{ item.name }}</nuxt-link>
-			</li>
-		</ul>
-	</base-section>
+	<motion-scroll>
+		<base-section class="section-contacts" title="Найти меня или связаться со мной">
+			<ul class="section-contacts-content">
+				<li v-for="item in items" :key="item.key" :data-key="item.key">
+					<span>
+						<base-icon :name="item.key" />
+					</span>
+					<nuxt-link rel="noopener noreferrer" target="_blank" :href="item.value">{{ item.name }}</nuxt-link>
+				</li>
+			</ul>
+		</base-section>
+	</motion-scroll>
 </template>
 
 <style scoped lang="scss">

@@ -6,6 +6,7 @@ import { storeToRefs } from 'pinia';
 import { computed, Page } from '#imports';
 import BasePicture from '~/components/elements/BasePicture.vue';
 import SrOnly from '~/components/utils/SrOnly.vue';
+import MotionScroll from '~/components/utils/MotionScroll.vue';
 
 const portfolioStore = usePortfolioStore();
 await useAsyncData('portfolios', portfolioStore.fetch);
@@ -30,44 +31,46 @@ const openSource = computed<ModelPortfolio[]>(() => {
 </script>
 
 <template>
-	<base-section title="Работы, о которых хочется рассказать" :badge="portfolios.length" class="section-portfolio">
-		<div class="section-portfolio-content">
-			<div v-for="item in favorites" :key="item._id" class="portfolio-preview">
-				<nuxt-link :href="item.permalink" target="_blank" :title="item.title">
-					<base-picture v-if="item.cover" :alt="item.title" :height="628" :width="1200" :src="item.cover" />
-					<sr-only>{{ item.title }}</sr-only>
-				</nuxt-link>
-			</div>
-			<div class="open-source-preview">
-				<ol>
-					<template v-for="(item, index) in openSource" :key="item.slug">
-						<li>
-							{{ index + 3 }}.
-							<nuxt-link :href="item.permalink" target="_blank" :title="item.title">{{ item.title }}</nuxt-link>
-						</li>
-						<hr v-if="index < openSource.length - 1" />
-					</template>
-				</ol>
-			</div>
-
-			<div class="section-portfolio-content__more">
-				<div class="arrow">
-					<hr />
-
-					<svg width="51" height="16" fill="none" viewBox="0 0 51 16">
-						<path
-							fill="currentColor"
-							d="M50.707 8.707a1 1 0 0 0 0-1.414L44.343.929a1 1 0 1 0-1.414 1.414L48.586 8l-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364ZM0 9h50V7H0v2Z"
-						/>
-					</svg>
+	<motion-scroll>
+		<base-section title="Работы, о которых хочется рассказать" :badge="portfolios.length" class="section-portfolio">
+			<div class="section-portfolio-content">
+				<div v-for="item in favorites" :key="item._id" class="portfolio-preview">
+					<nuxt-link :href="item.permalink" target="_blank" :title="item.title">
+						<base-picture v-if="item.cover" :alt="item.title" :height="628" :width="1200" :src="item.cover" />
+						<sr-only>{{ item.title }}</sr-only>
+					</nuxt-link>
 				</div>
-				<nuxt-link :href="{ name: Page.PortfolioListing }">
-					<span>Показать ещё</span>
-					<small>({{ portfolios.length - favorites.length - openSource.length }})</small>
-				</nuxt-link>
+				<div class="open-source-preview">
+					<ol>
+						<template v-for="(item, index) in openSource" :key="item.slug">
+							<li>
+								{{ index + 3 }}.
+								<nuxt-link :href="item.permalink" target="_blank" :title="item.title">{{ item.title }}</nuxt-link>
+							</li>
+							<hr v-if="index < openSource.length - 1" />
+						</template>
+					</ol>
+				</div>
+
+				<div class="section-portfolio-content__more">
+					<div class="arrow">
+						<hr />
+
+						<svg width="51" height="16" fill="none" viewBox="0 0 51 16">
+							<path
+								fill="currentColor"
+								d="M50.707 8.707a1 1 0 0 0 0-1.414L44.343.929a1 1 0 1 0-1.414 1.414L48.586 8l-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364ZM0 9h50V7H0v2Z"
+							/>
+						</svg>
+					</div>
+					<nuxt-link :href="{ name: Page.PortfolioListing }">
+						<span>Показать ещё</span>
+						<small>({{ portfolios.length - favorites.length - openSource.length }})</small>
+					</nuxt-link>
+				</div>
 			</div>
-		</div>
-	</base-section>
+		</base-section>
+	</motion-scroll>
 </template>
 
 <style lang="scss" scoped>

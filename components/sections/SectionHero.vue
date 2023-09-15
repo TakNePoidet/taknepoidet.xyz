@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BaseSection from '~/components/BaseSection.vue';
 import BasePicture from '~/components/elements/BasePicture.vue';
+import MotionScroll from '~/components/utils/MotionScroll.vue';
 </script>
 
 <template>
@@ -17,22 +18,24 @@ import BasePicture from '~/components/elements/BasePicture.vue';
 					:width="2529"
 					:height="1560"
 					alt="Моя фотография 1"
-				/><base-picture
-					src="/images/page/home/IMG_9435.jpg"
-					:width="1248"
-					:height="1560"
-					alt="Моя фотография 2"
-				/><base-picture src="/images/page/home/IMG_6615.jpg" :width="1248" :height="1560" alt="Моя фотография 3" />
-				<base-picture src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4" />
-				<base-picture src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5" />
+				/><base-picture src="/images/page/home/IMG_9435.jpg" :width="1248" :height="1560" alt="Моя фотография 2" />
+				<motion-scroll
+					><base-picture src="/images/page/home/IMG_6615.jpg" :width="1248" :height="1560" alt="Моя фотография 3"
+				/></motion-scroll>
+				<motion-scroll
+					><base-picture src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4"
+				/></motion-scroll>
+				<motion-scroll
+					><base-picture src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5"
+				/></motion-scroll>
 			</div>
 
-			<div class="section-hero-content__text">
+			<motion-scroll class="section-hero-content__text">
 				<p>
 					Я&nbsp;&mdash; Fullstack-разработчик, люблю фотографировать, кататься на&nbsp;велосипеде и&nbsp;всякое-разное
 				</p>
 				<p>Тут вы&nbsp;можете больше узнать обо мне и&nbsp;увидеть некоторые мои проекты</p>
-			</div>
+			</motion-scroll>
 		</div>
 	</base-section>
 </template>

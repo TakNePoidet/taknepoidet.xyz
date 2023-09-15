@@ -46,11 +46,13 @@ export default defineNuxtConfig({
 	site: {
 		url: process.env.NUXT_PUBLIC_SITE_URL
 	},
-	postcss: isProduction ? {
-		plugins: {
-			'postcss-preset-env': {
-				autoprefixer: {},
-			},
-		}
-	} : {},
+	postcss: isProduction
+		? {
+				plugins: {
+					'postcss-preset-env': {
+						autoprefixer: {}
+					}
+				}
+		  }
+		: {}
 });

@@ -61,6 +61,7 @@
 		"canvas-confetti": "^1.6.0",
 		"focus-trap": "^7.5.2",
 		"h3": "^1.8.1",
+		"motion": "^10.16.2",
 		"pinia": "^2.1.6",
 		"taknepoidet-scss-starter": "^1.0.0",
 		"vue": "^3.3.4"
