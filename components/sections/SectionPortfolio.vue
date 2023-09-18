@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import BaseSection from '~/components/BaseSection.vue';
-import { useAsyncData } from '#app';
-import { ModelPortfolio, usePortfolioStore } from '~/stores/portfolio';
 import { storeToRefs } from 'pinia';
+
+import { useAsyncData } from '#app';
 import { computed, Page } from '#imports';
+import BaseSection from '~/components/BaseSection.vue';
 import BasePicture from '~/components/elements/BasePicture.vue';
-import SrOnly from '~/components/utils/SrOnly.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';
+import SrOnly from '~/components/utils/SrOnly.vue';
+import { ModelPortfolio, usePortfolioStore } from '~/stores/portfolio';
 
 const portfolioStore = usePortfolioStore();
 await useAsyncData('portfolios', portfolioStore.fetch);
@@ -45,7 +46,9 @@ const openSource = computed<ModelPortfolio[]>(() => {
 						<template v-for="(item, index) in openSource" :key="item.slug">
 							<li>
 								{{ index + 3 }}.
-								<nuxt-link :href="item.permalink" target="_blank" :title="item.title">{{ item.title }}</nuxt-link>
+								<nuxt-link :href="item.permalink" target="_blank" :title="item.title">
+									{{ item.title }}
+								</nuxt-link>
 							</li>
 							<hr v-if="index < openSource.length - 1" />
 						</template>

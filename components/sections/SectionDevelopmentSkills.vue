@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import BaseSection from '~/components/BaseSection.vue';
-import { computed, onMounted, Page } from '#imports';
-import { ModelTag, Tag, usePortfolioStore } from '~/stores/portfolio';
+import { templateRef } from '@vueuse/core';
+import { animate, scroll } from 'motion';
 import { storeToRefs } from 'pinia';
+
+import { computed, onMounted, Page } from '#imports';
+import BaseSection from '~/components/BaseSection.vue';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';
-import { templateRef } from '@vueuse/core';
+import { ModelTag, Tag, usePortfolioStore } from '~/stores/portfolio';
 
 interface Skill {
 	key: string;
@@ -67,8 +69,6 @@ const skills = computed<Skill[]>(() => {
 
 const $loop = templateRef<HTMLElement>('$loop');
 const $ladder = templateRef<HTMLElement>('$ladder');
-
-import { animate, scroll } from 'motion';
 onMounted(() => {
 	if ($loop.value) {
 		scroll(animate($loop.value, { rotate: [0, 180] }), {
@@ -91,9 +91,9 @@ onMounted(() => {
 			<div class="section-developments-skills-content">
 				<ul>
 					<li v-for="skill in skills" :key="skill.key" :data-key="skill.key">
-						<nuxt-link v-if="skill.tag" :to="{ name: Page.PortfolioListingTag, params: { tag: skill.tag.key } }">{{
-							skill.name
-						}}</nuxt-link>
+						<nuxt-link v-if="skill.tag" :to="{ name: Page.PortfolioListingTag, params: { tag: skill.tag.key } }">
+							{{ skill.name }}
+						</nuxt-link>
 						<span v-else>{{ skill.name }}</span>
 						<base-icon :name="skill.key" />
 					</li>

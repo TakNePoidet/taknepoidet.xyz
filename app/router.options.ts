@@ -1,4 +1,5 @@
 import type { RouterOptions } from '@nuxt/schema';
+
 import { useNuxtApp } from '#imports';
 import { Page } from '~/utils/page';
 

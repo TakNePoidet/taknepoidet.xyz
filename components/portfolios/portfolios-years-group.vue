@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
-import { ModelPortfolio } from '~/stores/portfolio';
-import { useCollapse } from '~/composables/useCollapse';
+
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import Listing from '~/components/portfolios/listing.vue';
+import { useCollapse } from '~/composables/useCollapse';
+import { ModelPortfolio } from '~/stores/portfolio';
 
 const { open } = defineProps({
 	title: {

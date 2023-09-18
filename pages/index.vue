@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useHost } from '~/composables/useHost';
-import Seo from '~/components/utils/Seo.vue';
-import BasePage from '~/components/BasePage.vue';
-import SectionHero from '~/components/sections/SectionHero.vue';
-import SectionContacts from '~/components/sections/SectionContacts.vue';
 import { computed, definePageMeta, Page } from '#imports';
-import SectionPortfolio from '~/components/sections/SectionPortfolio.vue';
+import BasePage from '~/components/BasePage.vue';
+import SectionContacts from '~/components/sections/SectionContacts.vue';
 import SectionDevelopmentSkills from '~/components/sections/SectionDevelopmentSkills.vue';
+import SectionHero from '~/components/sections/SectionHero.vue';
+import SectionPortfolio from '~/components/sections/SectionPortfolio.vue';
+import Seo from '~/components/utils/Seo.vue';
+import { useHost } from '~/composables/useHost';
 
 definePageMeta({
 	name: Page.Home

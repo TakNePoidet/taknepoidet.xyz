@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useEventListener } from '@vueuse/core';
+
 import { useWindow } from '~/composables/useWindow';
 
 const appHeight = () => {

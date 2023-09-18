@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { computed, definePageMeta, useRoute } from '#imports';
+import { storeToRefs } from 'pinia';
+
+import { computed, definePageMeta, showError, useAsyncData, useRoute } from '#imports';
 import BasePage from '~/components/BasePage.vue';
 import BaseSection from '~/components/BaseSection.vue';
+import Listing from '~/components/portfolios/listing.vue';
 import YearsGroupPortfolios from '~/components/portfolios/portfolios-years-group.vue';
 import Seo from '~/components/utils/Seo.vue';
-import { Page } from '~/utils/page';
-import Listing from '~/components/portfolios/listing.vue';
 import { ModelPortfolio, Tag, usePortfolioStore } from '~/stores/portfolio';
-import { showError, useAsyncData } from '#imports';
-import { storeToRefs } from 'pinia';
+import { Page } from '~/utils/page';
 
 definePageMeta({
 	name: Page.PortfolioListing

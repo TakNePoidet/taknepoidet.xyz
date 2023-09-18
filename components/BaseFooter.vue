@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import confetti from 'canvas-confetti';
-import { throttle } from '~/utils/throttle';
-import { useNamespace } from '~/composables/useNamespace';
-import BasePicture from '~/components/elements/BasePicture.vue';
+
 import { computed, useState } from '#imports';
+import BasePicture from '~/components/elements/BasePicture.vue';
+import { useNamespace } from '~/composables/useNamespace';
+import { throttle } from '~/utils/throttle';
 
 const { base, component } = useNamespace('footer');
 

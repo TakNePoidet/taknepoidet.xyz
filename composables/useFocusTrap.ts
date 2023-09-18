@@ -1,6 +1,7 @@
-import { ref, Ref, watch } from 'vue';
 import type { FocusTrap } from 'focus-trap';
 import * as focusTrap from 'focus-trap';
+import { Ref, ref, watch } from 'vue';
+
 import { onBeforeUnmount, onMounted } from '#imports'; // ESM
 
 export function useFocusTrap($el: Ref<HTMLElement | null>, options: focusTrap.Options = {}) {

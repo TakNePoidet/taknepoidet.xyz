@@ -25,6 +25,7 @@
 
 <script setup lang="ts">
 import { computed, PropType } from 'vue';
+
 import Canonical from '~/components/utils/Canonical.vue';
 
 const props = defineProps({

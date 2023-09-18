@@ -1,6 +1,7 @@
-import { defineStore } from 'pinia';
-import { computed, queryContent, ref } from '#imports';
 import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import { defineStore } from 'pinia';
+
+import { computed, queryContent, ref } from '#imports';
 
 interface Content extends ParsedContent {
 	date: string;

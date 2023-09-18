@@ -1,5 +1,6 @@
-import { computed } from 'vue';
 import { useEventListener } from '@vueuse/core';
+import { computed } from 'vue';
+
 import { useSignal } from '~/composables/useSignal';
 
 let stack = 0;

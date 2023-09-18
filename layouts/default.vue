@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import BaseHeader from '~/components/BaseHeader.vue';
 import BaseFooter from '~/components/BaseFooter.vue';
+import BaseHeader from '~/components/BaseHeader.vue';
 </script>
 
 <template>
-	<base-header />
-	<main>
-		<nuxt-page />
-	</main>
-	<base-footer />
+	<div>
+		<base-header />
+		<main>
+			<nuxt-page />
+		</main>
+		<base-footer />
+	</div>
 </template>
 
 <style scoped lang="scss">

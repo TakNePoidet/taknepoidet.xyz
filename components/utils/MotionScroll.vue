@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { templateRef } from '#imports';
+import type { MotionKeyframesDefinition } from '@motionone/dom';
+import { animate, scroll } from 'motion';
+import { PropType } from 'vue';
+
+import { onMounted, templateRef } from '#imports';
 
 const { keyframes } = defineProps({
 	keyframes: {
@@ -10,10 +14,6 @@ const { keyframes } = defineProps({
 	}
 });
 const $root = templateRef<HTMLElement>('$root');
-import { animate, scroll } from 'motion';
-import { onMounted } from '#imports';
-import { PropType } from 'vue';
-import type { MotionKeyframesDefinition } from '@motionone/dom';
 
 onMounted(() => {
 	if ($root.value) {

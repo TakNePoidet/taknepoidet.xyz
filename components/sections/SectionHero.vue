@@ -19,15 +19,15 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 					:height="1560"
 					alt="Моя фотография 1"
 				/><base-picture src="/images/page/home/IMG_9435.jpg" :width="1248" :height="1560" alt="Моя фотография 2" />
-				<motion-scroll
-					><base-picture src="/images/page/home/IMG_6615.jpg" :width="1248" :height="1560" alt="Моя фотография 3"
-				/></motion-scroll>
-				<motion-scroll
-					><base-picture src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4"
-				/></motion-scroll>
-				<motion-scroll
-					><base-picture src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5"
-				/></motion-scroll>
+				<motion-scroll>
+					<base-picture src="/images/page/home/IMG_6615.jpg" :width="1248" :height="1560" alt="Моя фотография 3" />
+				</motion-scroll>
+				<motion-scroll>
+					<base-picture src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4" />
+				</motion-scroll>
+				<motion-scroll>
+					<base-picture src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5" />
+				</motion-scroll>
 			</div>
 
 			<motion-scroll class="section-hero-content__text">

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BaseSection from '~/components/BaseSection.vue';
 import { computed } from '#imports';
+import BaseSection from '~/components/BaseSection.vue';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';
 
@@ -53,7 +53,9 @@ const items = computed<ContactItem[]>(() => [
 					<span>
 						<base-icon :name="item.key" />
 					</span>
-					<nuxt-link rel="noopener noreferrer" target="_blank" :href="item.value">{{ item.name }}</nuxt-link>
+					<nuxt-link rel="noopener noreferrer" target="_blank" :href="item.value">
+						{{ item.name }}
+					</nuxt-link>
 				</li>
 			</ul>
 		</base-section>

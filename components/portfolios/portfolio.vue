@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
-import { ModelPortfolio } from '~/stores/portfolio';
-import BasePicture from '~/components/elements/BasePicture.vue';
+
 import BaseIcon from '~/components/elements/BaseIcon.vue';
+import BasePicture from '~/components/elements/BasePicture.vue';
+import { ModelPortfolio } from '~/stores/portfolio';
 import { Page } from '~/utils/page';
 
 defineProps({
@@ -24,7 +25,9 @@ defineProps({
 			:src="article.cover"
 		/>
 		<div class="portfolio__content">
-			<h3 class="portfolio__title">{{ article.title }}</h3>
+			<h3 class="portfolio__title">
+				{{ article.title }}
+			</h3>
 			<ul v-if="article.tags.length > 0" class="portfolio__tags">
 				<li v-for="tag in article.tags.values()" :key="tag.key">
 					<nuxt-link :to="{ name: Page.PortfolioListingTag, params: { tag: tag.key } }"> #{{ tag.title }} </nuxt-link>

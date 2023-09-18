@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { templateRef, useToggle } from '@vueuse/core';
-import { useSignal } from '~/composables/useSignal';
-import { useNamespace } from '~/composables/useNamespace';
-import SrOnly from '~/components/utils/SrOnly.vue';
-import BaseIcon from '~/components/elements/BaseIcon.vue';
-import BaseLogo from '~/components/BaseLogo.vue';
+
 import { useFocusTrap, watch } from '#imports';
+import BaseLogo from '~/components/BaseLogo.vue';
+import BaseIcon from '~/components/elements/BaseIcon.vue';
 import ThemeSwitcher from '~/components/elements/ThemeSwitcher.vue';
+import SrOnly from '~/components/utils/SrOnly.vue';
+import { useNamespace } from '~/composables/useNamespace';
+import { useSignal } from '~/composables/useSignal';
 
 const ns = useNamespace('header');
 const [isOpen, setIsOpen] = useSignal(false);

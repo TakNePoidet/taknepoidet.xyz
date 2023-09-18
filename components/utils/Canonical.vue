@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { PropType } from 'vue/dist/vue';
 import { setResponseHeaders } from 'h3';
+import { PropType } from 'vue/dist/vue';
+
 import { useRequestEvent } from '#imports';
 
 const props = defineProps({

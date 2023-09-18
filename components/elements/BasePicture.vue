@@ -33,11 +33,12 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, PropType, readonly, Ref } from 'vue';
 import { templateRef } from '@vueuse/core';
-import { useSignal } from '~/composables/useSignal';
-import { useNuxtImage } from '~/composables/useNuxtImage';
+import { onMounted, PropType, readonly, Ref } from 'vue';
+
 import { computed, nextTick, ref, useNamespace, useVisible, watch } from '#imports';
+import { useNuxtImage } from '~/composables/useNuxtImage';
+import { useSignal } from '~/composables/useSignal';
 
 const props = defineProps({
 	src: {
