@@ -2,6 +2,7 @@
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
+	devtools: { enabled: true },
 	css: ['assets/style/index.scss', ...(isProduction ? ['assets/style/production.scss'] : [])],
 	components: false,
 	imports: {
@@ -23,7 +24,7 @@ export default defineNuxtConfig({
 	googleFonts: {
 		display: 'swap',
 		families: {
-			Manrope: [400, 500, 600, 700]
+			Manrope: [400, 500, 600, 700, 800]
 		}
 	},
 	robots: {
@@ -41,10 +42,14 @@ export default defineNuxtConfig({
 		}
 	},
 	sitemap: {
-		credits: false
+		credits: false,
+		exclude: ['/fallback']
 	},
 	site: {
 		url: process.env.NUXT_PUBLIC_SITE_URL
+	},
+	routeRules: {
+		'/fallback': { index: false }
 	},
 	postcss: isProduction
 		? {

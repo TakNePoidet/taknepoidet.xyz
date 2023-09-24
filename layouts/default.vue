@@ -5,6 +5,7 @@ import BaseHeader from '~/components/BaseHeader.vue';
 
 <template>
 	<div>
+		<Body class="default-layout" />
 		<base-header />
 		<main>
 			<nuxt-page />
@@ -13,6 +14,11 @@ import BaseHeader from '~/components/BaseHeader.vue';
 	</div>
 </template>
 
+<style lang="scss">
+body.default-layout {
+	padding: 0 var(--ears);
+}
+</style>
 <style scoped lang="scss">
 /* stylelint-disable-next-line selector-id-pattern */
 #__nuxt {
