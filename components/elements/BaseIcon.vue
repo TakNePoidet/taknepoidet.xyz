@@ -34,9 +34,7 @@ defineProps({
 </script>
 
 <template>
-	<svg viewBox="0 0 32 32" :class="`icon icon--${name}`">
-		<use :xlink:href="`/images/sprites.svg#${name}`" />
-	</svg>
+	<svg-icon :class="`icon icon--${name}`" :name="name" />
 </template>
 
 <style scoped>

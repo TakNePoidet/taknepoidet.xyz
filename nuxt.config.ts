@@ -19,7 +19,8 @@ export default defineNuxtConfig({
 		'nuxt-simple-robots',
 		'nuxt-yandex-metrika',
 		'@pinia/nuxt',
-		'@nuxt/content'
+		'@nuxt/content',
+		'@nuxtjs/svg-sprite'
 	],
 	googleFonts: {
 		display: 'swap',
