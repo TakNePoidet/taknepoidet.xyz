@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { templateRef, useElementBounding } from '@vueuse/core';
-import { PropType } from 'vue';
+import type { PropType } from 'vue';
 
 import { nextTick, onMounted, onUpdated, useSignal, watch } from '#imports';
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { MotionKeyframesDefinition } from '@motionone/dom';
 import { animate, scroll } from 'motion';
-import { PropType } from 'vue';
+import type { PropType } from 'vue';
 
 import { onMounted, templateRef } from '#imports';
 

@@ -1,4 +1,4 @@
-import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
 import { defineStore } from 'pinia';
 
 import { computed, queryContent, ref } from '#imports';

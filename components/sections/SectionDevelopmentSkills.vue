@@ -7,7 +7,8 @@ import { computed, onMounted, Page } from '#imports';
 import BaseSection from '~/components/BaseSection.vue';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';
-import { ModelTag, Tag, usePortfolioStore } from '~/stores/portfolio';
+import type { ModelTag, Tag } from '~/stores/portfolio';
+import { usePortfolioStore } from '~/stores/portfolio';
 
 interface Skill {
 	key: string;

@@ -1,6 +1,7 @@
 import type { FocusTrap } from 'focus-trap';
 import * as focusTrap from 'focus-trap';
-import { Ref, ref, watch } from 'vue';
+import type { Ref } from 'vue';
+import { ref, watch } from 'vue';
 
 import { onBeforeUnmount, onMounted } from '#imports'; // ESM
 

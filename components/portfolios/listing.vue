@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PropType } from 'vue';
+import type { PropType } from 'vue';
 
 import Portfolio from '~/components/portfolios/portfolio.vue';
-import { ModelPortfolio } from '~/stores/portfolio';
+import type { ModelPortfolio } from '~/stores/portfolio';
 
 defineProps({
 	items: {

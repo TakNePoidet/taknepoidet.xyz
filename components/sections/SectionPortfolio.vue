@@ -7,7 +7,8 @@ import BaseSection from '~/components/BaseSection.vue';
 import BasePicture from '~/components/elements/BasePicture.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';
 import SrOnly from '~/components/utils/SrOnly.vue';
-import { ModelPortfolio, usePortfolioStore } from '~/stores/portfolio';
+import type { ModelPortfolio } from '~/stores/portfolio';
+import { usePortfolioStore } from '~/stores/portfolio';
 
 const portfolioStore = usePortfolioStore();
 await useAsyncData('portfolios', portfolioStore.fetch);

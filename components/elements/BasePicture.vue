@@ -34,7 +34,7 @@
 
 <script lang="ts" setup>
 import { templateRef } from '@vueuse/core';
-import { onMounted, PropType, readonly, Ref } from 'vue';
+import { onMounted, type PropType, readonly, type Ref } from 'vue';
 
 import { computed, nextTick, ref, useNamespace, useVisible, watch } from '#imports';
 import { useNuxtImage } from '~/composables/useNuxtImage';

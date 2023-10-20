@@ -7,7 +7,8 @@ import BaseSection from '~/components/BaseSection.vue';
 import Listing from '~/components/portfolios/listing.vue';
 import YearsGroupPortfolios from '~/components/portfolios/portfolios-years-group.vue';
 import Seo from '~/components/utils/Seo.vue';
-import { ModelPortfolio, Tag, usePortfolioStore } from '~/stores/portfolio';
+import type { ModelPortfolio, Tag } from '~/stores/portfolio';
+import { usePortfolioStore } from '~/stores/portfolio';
 import { Page } from '~/utils/page';
 
 definePageMeta({

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { PropType } from 'vue';
+import type { PropType } from 'vue';
 
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import BasePicture from '~/components/elements/BasePicture.vue';
-import { ModelPortfolio } from '~/stores/portfolio';
+import type { ModelPortfolio } from '~/stores/portfolio';
 import { Page } from '~/utils/page';
 
 defineProps({

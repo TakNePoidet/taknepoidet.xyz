@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { GlitchResult, PowerGlitch } from 'powerglitch';
+import type { GlitchResult } from 'powerglitch';
+import { PowerGlitch } from 'powerglitch';
 
 import { definePageMeta, onBeforeMount, onMounted, Page, templateRef } from '#imports';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
