@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { setResponseHeaders } from 'h3';
-import { PropType } from 'vue/dist/vue';
+import type { PropType } from 'vue';
 
 import { useRequestEvent } from '#imports';
 
