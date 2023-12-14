@@ -24,8 +24,7 @@ body.default-layout {
 #__nuxt {
 	display: flex;
 	flex-direction: column;
-	align-content: stretch;
-	justify-content: flex-start;
+	place-content: stretch flex-start;
 	min-height: 100%;
 
 	main {

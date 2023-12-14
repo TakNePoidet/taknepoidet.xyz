@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import { useEventListener } from '@vueuse/core';
+import { onBeforeUnmount } from 'vue';
 
+import { onMounted } from '#imports';
 import { useWindow } from '~/composables/useWindow';
+import { Snow } from '~/utils/snow';
 
 const appHeight = () => {
 	const doc = document.documentElement;
@@ -11,9 +14,19 @@ const appHeight = () => {
 const $windows = useWindow();
 
 useEventListener($windows, 'resize', appHeight);
+
+let snow: Snow;
 if (process.client) {
 	appHeight();
 }
+onMounted(() => {
+	if (process.client) {
+		snow = new Snow();
+	}
+});
+onBeforeUnmount(() => {
+	snow.destroy();
+});
 </script>
 <template>
 	<Html lang="ru" />

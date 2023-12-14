@@ -73,8 +73,7 @@ const items = computed<ContactItem[]>(() => [
 		display: flex;
 		flex-wrap: wrap;
 		gap: #{utility.rem(64)};
-		align-content: center;
-		justify-content: center;
+		place-content: center center;
 		margin: 0;
 		padding: 0;
 		list-style: none;
