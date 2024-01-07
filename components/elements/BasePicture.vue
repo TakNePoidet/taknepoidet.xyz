@@ -11,7 +11,6 @@
 
 			<img
 				ref="$element"
-				:style="`aspect-ratio: ${width}/${height};`"
 				:src="placeholder"
 				:alt="alt"
 				:width="width"
@@ -19,6 +18,7 @@
 				:data-src="src"
 				:data-sizes="'auto'"
 				:loading="preload ? 'eager' : 'lazy'"
+				:style="{ aspectRatio: !isVisible ? `${width}/${height}` : undefined }"
 			/>
 			<template v-if="preload">
 				<Link

@@ -12,20 +12,25 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 				<h2>Привет, меня зовут</h2>
 			</div>
 			<div class="section-hero-content__gallery">
-				<base-picture
-					preload
-					src="/images/page/home/image.jpg"
-					:width="2529"
-					:height="1560"
-					alt="Моя фотография 1"
-					blurhash="L9GlFw00RL~WEJIATNNF%fR4WuI="
-				/><base-picture
-					src="/images/page/home/IMG_9435.jpg"
-					:width="1248"
-					:height="1560"
-					alt="Моя фотография 2"
-					blurhash="L8D+Sc.m1cVFuNZ$#mOX02a0r?tk"
-				/>
+				<div>
+					<base-picture
+						preload
+						src="/images/page/home/image.jpg"
+						:width="2529"
+						:height="1560"
+						alt="Моя фотография 1"
+						blurhash="L9GlFw00RL~WEJIATNNF%fR4WuI="
+					/>
+				</div>
+				<div>
+					<base-picture
+						src="/images/page/home/IMG_9435.jpg"
+						:width="1248"
+						:height="1560"
+						alt="Моя фотография 2"
+						blurhash="L8D+Sc.m1cVFuNZ$#mOX02a0r?tk"
+					/>
+				</div>
 				<motion-scroll>
 					<base-picture
 						src="/images/page/home/IMG_6615.jpg"
@@ -103,23 +108,30 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 			grid-template-columns: repeat(3, 1fr);
 			gap: #{utility.rem(16)};
 
-			:deep(.picture) {
-				height: 100%;
-				border: 1px solid var(--base-border);
-				border-radius: #{utility.rem(16)};
-
-				img {
-					object-fit: cover;
-					width: 100%;
+			> div {
+				:deep(.picture) {
 					height: 100%;
-					aspect-ratio: 4/ 5;
+					border: 1px solid var(--base-border);
+					border-radius: #{utility.rem(16)};
+
+					img {
+						object-fit: cover;
+						width: 100%;
+						height: 100%;
+					}
 				}
 
 				&:first-child {
 					grid-column: 1 / 3;
+				}
 
-					img {
-						aspect-ratio: auto;
+				@include breakpoints.media-down('xl') {
+					&:not(:first-child) {
+						:deep(.picture) {
+							img {
+								aspect-ratio: 4/ 5 !important;
+							}
+						}
 					}
 				}
 			}
@@ -154,11 +166,13 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 				grid-template-columns: repeat(2, 1fr);
 				gap: #{utility.rem(4)};
 
-				:deep(.picture) {
-					border-radius: #{utility.rem(4)};
-
+				> div {
 					&:first-child {
 						grid-column: 1/-1;
+					}
+
+					:deep(.picture) {
+						border-radius: #{utility.rem(4)};
 					}
 				}
 			}
