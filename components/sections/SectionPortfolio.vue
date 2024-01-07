@@ -38,7 +38,14 @@ const openSource = computed<ModelPortfolio[]>(() => {
 			<div class="section-portfolio-content">
 				<div v-for="item in favorites" :key="item._id" class="portfolio-preview">
 					<nuxt-link :href="item.permalink" target="_blank" :title="item.title">
-						<base-picture v-if="item.cover" :alt="item.title" :height="628" :width="1200" :src="item.cover" />
+						<base-picture
+							v-if="item.cover"
+							:alt="item.title"
+							:height="628"
+							:width="1200"
+							:src="item.cover"
+							:blurhash="item.blurhash"
+						/>
 						<sr-only>{{ item.title }}</sr-only>
 					</nuxt-link>
 				</div>

@@ -18,15 +18,40 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 					:width="2529"
 					:height="1560"
 					alt="Моя фотография 1"
-				/><base-picture src="/images/page/home/IMG_9435.jpg" :width="1248" :height="1560" alt="Моя фотография 2" />
+					blurhash="L9GlFw00RL~WEJIATNNF%fR4WuI="
+				/><base-picture
+					src="/images/page/home/IMG_9435.jpg"
+					:width="1248"
+					:height="1560"
+					alt="Моя фотография 2"
+					blurhash="L8D+Sc.m1cVFuNZ$#mOX02a0r?tk"
+				/>
 				<motion-scroll>
-					<base-picture src="/images/page/home/IMG_6615.jpg" :width="1248" :height="1560" alt="Моя фотография 3" />
+					<base-picture
+						src="/images/page/home/IMG_6615.jpg"
+						:width="1248"
+						:height="1560"
+						alt="Моя фотография 3"
+						blurhash="LKJ7:-cYpJ%e%j%f.7NHWVIVIAs;"
+					/>
 				</motion-scroll>
 				<motion-scroll>
-					<base-picture src="/images/page/home/IMG_9436.jpg" :width="2529" :height="1560" alt="Моя фотография 4" />
+					<base-picture
+						src="/images/page/home/IMG_9436.jpg"
+						:width="2529"
+						:height="1560"
+						alt="Моя фотография 4"
+						blurhash="LQH-rvV@AJ-;5_R%?FkE9hxu9HM{"
+					/>
 				</motion-scroll>
 				<motion-scroll>
-					<base-picture src="/images/page/home/IMG_9434.jpg" :width="2529" :height="1560" alt="Моя фотография 5" />
+					<base-picture
+						src="/images/page/home/IMG_9434.jpg"
+						:width="2529"
+						:height="1560"
+						alt="Моя фотография 5"
+						blurhash="LOLzEe_MohNEER%#t7o}=pWEtkt8"
+					/>
 				</motion-scroll>
 			</div>
 
@@ -79,13 +104,14 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 			gap: #{utility.rem(16)};
 
 			:deep(.picture) {
+				height: 100%;
+				border: 1px solid var(--base-border);
 				border-radius: #{utility.rem(16)};
 
 				img {
 					object-fit: cover;
 					width: 100%;
-					height: auto;
-					border: 1px solid var(--base-border);
+					height: 100%;
 					aspect-ratio: 4/ 5;
 				}
 

@@ -23,6 +23,7 @@ defineProps({
 			:height="628"
 			:width="1200"
 			:src="article.cover"
+			:blurhash="article.blurhash"
 		/>
 		<div class="portfolio__content">
 			<h3 class="portfolio__title">

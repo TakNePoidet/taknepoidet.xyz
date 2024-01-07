@@ -21,6 +21,7 @@ export interface ModelPortfolio extends ParsedContent {
 	date: Date;
 	slug: string;
 	cover?: string;
+	blurhash?: string;
 	permalink?: string;
 	tags: ModelTag[];
 	openSource: boolean;
