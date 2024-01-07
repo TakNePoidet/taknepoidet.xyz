@@ -116,8 +116,7 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 				}
 
 				&:first-child {
-					grid-column-start: 1;
-					grid-column-end: 3;
+					grid-column: 1 / 3;
 
 					img {
 						aspect-ratio: auto;
