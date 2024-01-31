@@ -20,8 +20,11 @@ export default defineNuxtConfig({
 		'nuxt-yandex-metrika',
 		'@pinia/nuxt',
 		'@nuxt/content',
-		'@nuxtjs/svg-sprite'
+		'@poidet/svg-sprite'
 	],
+	svgSprite: {
+		pageIcons: false
+	},
 	googleFonts: {
 		display: 'swap',
 		families: {
