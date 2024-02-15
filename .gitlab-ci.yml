@@ -17,10 +17,10 @@ build:
     VITE_YANDEX_VERIFICATION: $VITE_YANDEX_VERIFICATION
   script:
     - /kaniko/executor
-      --build-arg "NUXT_PUBLIC_SITE_URL=${$NUXT_PUBLIC_SITE_URL}"
-      --build-arg "SITE=${$SITE}"
-      --build-arg "VITE_YANDEX_METRICA=${$VITE_YANDEX_METRICA}"
-      --build-arg "VITE_YANDEX_VERIFICATION=${$VITE_YANDEX_VERIFICATION}"
+      --build-arg NUXT_PUBLIC_SITE_URL='${$NUXT_PUBLIC_SITE_URL}'
+      --build-arg SITE='${$SITE}'
+      --build-arg VITE_YANDEX_METRICA='${$VITE_YANDEX_METRICA}'
+      --build-arg VITE_YANDEX_VERIFICATION='${$VITE_YANDEX_VERIFICATION}'
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "${CI_REGISTRY_IMAGE}/site:${CI_COMMIT_SHA}"
