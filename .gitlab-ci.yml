@@ -1,0 +1,22 @@
+stages:
+  - build
+
+default:
+  tags:
+    - student2.tages.dev
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.19.2-debug
+    entrypoint: ['']
+  variables:
+    NUXT_PUBLIC_SITE_URL: $NUXT_PUBLIC_SITE_URL
+    SITE: $SITE
+    VITE_YANDEX_METRICA: $VITE_YANDEX_METRICA
+    VITE_YANDEX_VERIFICATION: $VITE_YANDEX_VERIFICATION
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/site:${CI_COMMIT_SHA}"
