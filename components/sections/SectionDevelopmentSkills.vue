@@ -177,7 +177,7 @@ onMounted(() => {
 @use 'assets/style/utility';
 @use 'assets/style/breakpoints';
 
-.section-developments-skills {
+.section.section-developments-skills {
 	position: relative;
 	width: var(--container);
 	margin-right: auto;
