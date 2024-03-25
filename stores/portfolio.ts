@@ -24,7 +24,6 @@ export interface ModelPortfolio extends ParsedContent {
 	blurhash?: string;
 	permalink?: string;
 	tags: ModelTag[];
-	openSource: boolean;
 }
 
 export const enum Tag {

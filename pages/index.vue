@@ -4,6 +4,7 @@ import BasePage from '~/components/BasePage.vue';
 import SectionContacts from '~/components/sections/SectionContacts.vue';
 import SectionDevelopmentSkills from '~/components/sections/SectionDevelopmentSkills.vue';
 import SectionHero from '~/components/sections/SectionHero.vue';
+import SectionInventory from '~/components/sections/SectionInventory.vue';
 import SectionPortfolio from '~/components/sections/SectionPortfolio.vue';
 import Seo from '~/components/utils/Seo.vue';
 import { useHost } from '~/composables/useHost';
@@ -23,5 +24,6 @@ const canonical = computed(() => host.value);
 		<section-contacts />
 		<section-development-skills />
 		<section-portfolio />
+		<section-inventory />
 	</base-page>
 </template>

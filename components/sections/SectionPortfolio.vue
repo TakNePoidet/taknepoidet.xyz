@@ -26,10 +26,6 @@ const favorites = computed<ModelPortfolio[]>(() => {
 			return list.findIndex((item) => item === a.slug) > list.findIndex((item) => item === b.slug) ? 1 : -1;
 		});
 });
-
-const openSource = computed<ModelPortfolio[]>(() => {
-	return portfolios.value.filter(({ openSource }) => openSource).slice(0, 3);
-});
 </script>
 
 <template>
@@ -49,20 +45,6 @@ const openSource = computed<ModelPortfolio[]>(() => {
 						<sr-only>{{ item.title }}</sr-only>
 					</nuxt-link>
 				</div>
-				<div class="open-source-preview">
-					<ol>
-						<template v-for="(item, index) in openSource" :key="item.slug">
-							<li>
-								{{ index + 3 }}.
-								<nuxt-link :href="item.permalink" target="_blank" :title="item.title">
-									{{ item.title }}
-								</nuxt-link>
-							</li>
-							<hr v-if="index < openSource.length - 1" />
-						</template>
-					</ol>
-				</div>
-
 				<div class="section-portfolio-content__more">
 					<div class="arrow">
 						<hr />
@@ -76,7 +58,7 @@ const openSource = computed<ModelPortfolio[]>(() => {
 					</div>
 					<nuxt-link :href="{ name: Page.PortfolioListing }">
 						<span>Показать ещё</span>
-						<small>({{ portfolios.length - favorites.length - openSource.length }})</small>
+						<small>({{ portfolios.length - favorites.length }})</small>
 					</nuxt-link>
 				</div>
 			</div>
@@ -108,63 +90,6 @@ const openSource = computed<ModelPortfolio[]>(() => {
 
 		@include breakpoints.media-down('xl') {
 			border-radius: #{utility.rem(12)};
-		}
-	}
-
-	.open-source-preview {
-		grid-column: 1/ -1;
-		order: 3;
-		background-color: var(--brand-color);
-		color: var(--white);
-
-		hr {
-			height: 1px;
-			border: 0;
-			background: #ebebeb;
-			opacity: 0.5;
-		}
-
-		ol {
-			display: grid;
-			gap: #{utility.rem(16)};
-			margin: 0;
-			padding: #{utility.rem(24 * 1.5)} #{utility.rem(16)};
-			list-style: none;
-
-			li {
-				color: var(--white);
-				font-weight: 700;
-				font-size: #{utility.rem(24)};
-				line-height: 130%; /* 32px */
-				a {
-					color: inherit;
-					text-decoration: none;
-
-					@include utility.has-hover {
-						text-decoration: underline;
-					}
-				}
-			}
-
-			@include breakpoints.media-up('xl') {
-				gap: #{utility.rem(32)};
-				padding: #{utility.rem(32 * 1.5)} #{utility.rem(32)};
-
-				li {
-					font-size: #{utility.rem(32)};
-				}
-			}
-		}
-
-		@include breakpoints.media-down('xl') {
-			ol {
-				gap: #{utility.rem(16)};
-				padding: #{utility.rem(16 * 1.5)} #{utility.rem(16)};
-
-				li {
-					font-size: #{utility.rem(20)};
-				}
-			}
 		}
 	}
 
