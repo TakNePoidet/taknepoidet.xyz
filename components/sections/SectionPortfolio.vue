@@ -40,7 +40,7 @@ const favorites = computed<ModelPortfolio[]>(() => {
 							:height="628"
 							:width="1200"
 							:src="item.cover"
-							:blurhash="item.blurhash"
+							:thumbhash="item.thumbhash"
 						/>
 						<sr-only>{{ item.title }}</sr-only>
 					</nuxt-link>

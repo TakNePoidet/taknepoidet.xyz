@@ -4,7 +4,7 @@ date: 2023-05-31
 slug: pr-liz
 permalink: https://pr-liz.ru
 cover: /images/content/portfolio/pr-liz.jpg
-blurhash: LON^e;t7?bt7~qofD%WBRkozfPWA
+thumbhash: 8fcJBIDIqIiPdXaGeHZLd/BbRw==
 tags:
   - nuxt
   - laravel

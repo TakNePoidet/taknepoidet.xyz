@@ -19,7 +19,7 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 						:width="2529"
 						:height="1560"
 						alt="Моя фотография 1"
-						blurhash="L9GlFw00RL~WEJIATNNF%fR4WuI="
+						thumbhash="HggGDIJgXa9WanlbeGz9ffg0OQ=="
 					/>
 				</div>
 				<div>
@@ -28,7 +28,7 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 						:width="1248"
 						:height="1560"
 						alt="Моя фотография 2"
-						blurhash="L8D+Sc.m1cVFuNZ$#mOX02a0r?tk"
+						thumbhash="ljgGDgROVfSFiAh3iZmHdGmHALMTA2s="
 					/>
 				</div>
 				<motion-scroll>
@@ -37,7 +37,7 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 						:width="1248"
 						:height="1560"
 						alt="Моя фотография 3"
-						blurhash="LKJ7:-cYpJ%e%j%f.7NHWVIVIAs;"
+						thumbhash="5ScGHgKoufm7Vnc1qXRXeViIVZAIQ2c="
 					/>
 				</motion-scroll>
 				<motion-scroll>
@@ -46,7 +46,7 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 						:width="2529"
 						:height="1560"
 						alt="Моя фотография 4"
-						blurhash="LQH-rvV@AJ-;5_R%?FkE9hxu9HM{"
+						thumbhash="XxgGPgZIbbTkeUgLhoBXfpknWICVAzc="
 					/>
 				</motion-scroll>
 				<motion-scroll>
@@ -55,7 +55,7 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 						:width="2529"
 						:height="1560"
 						alt="Моя фотография 5"
-						blurhash="LOLzEe_MohNEER%#t7o}=pWEtkt8"
+						thumbhash="5zgKFgSPhWObaaiXaWp1nFZ3NEUPd7M="
 					/>
 				</motion-scroll>
 			</div>

@@ -71,7 +71,7 @@ const props = defineProps({
 		required: false,
 		default: false
 	},
-	blurhash: {
+	thumbhash: {
 		type: String as PropType<string>,
 		required: false,
 		default: null
@@ -99,10 +99,10 @@ if (props.preload) {
 }
 
 const placeholder = computed(() => {
-	if (props.blurhash) {
+	if (props.thumbhash) {
 		return createPlaceholderFromHash({
-			hash: props.blurhash,
-			hashType: 'blurhash',
+			hash: props.thumbhash,
+			hashType: 'thumbhash',
 			ratio: props.width && props.height ? props.width / props.height : undefined
 		});
 	}
