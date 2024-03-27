@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { templateRef, useToggle } from '@vueuse/core';
 
-import { useFocusTrap, watch } from '#imports';
+import { useFocusTrap, useWindowSize, watch } from '#imports';
 import BaseLogo from '~/components/BaseLogo.vue';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import ThemeSwitcher from '~/components/elements/ThemeSwitcher.vue';
@@ -33,6 +33,15 @@ watch(isOpen, (value) => {
 		deactivate();
 	}
 });
+
+function close() {
+	isOpen.value = false;
+}
+watch(useWindowSize().width, (value, oldValue) => {
+	if (value >= 1360 && oldValue < 1360) {
+		close();
+	}
+});
 </script>
 
 <template>
@@ -49,6 +58,19 @@ watch(isOpen, (value) => {
 				</nuxt-link>
 			</div>
 			<div :class="[ns.component('content')]">
+				<nav :class="ns.component('navigation')">
+					<ul>
+						<li>
+							<nuxt-link href="/#about" @click="close">Обо мне</nuxt-link>
+						</li>
+						<li>
+							<nuxt-link href="/#portfolio" @click="close">Портфолио</nuxt-link>
+						</li>
+						<li>
+							<nuxt-link href="/#inventory" @click="close">Инвентарь</nuxt-link>
+						</li>
+					</ul>
+				</nav>
 				<theme-switcher :class="[ns.component('theme')]" />
 			</div>
 		</div>
@@ -112,6 +134,50 @@ watch(isOpen, (value) => {
 		}
 	}
 
+	& &__content {
+		display: flex;
+		gap: #{utility.rem(24)};
+		align-items: center;
+		border-radius: #{utility.rem(16)} #{utility.rem(50)} #{utility.rem(50)} #{utility.rem(16)};
+		background-color: var(--blank-fill);
+	}
+
+	& &__navigation {
+		ul {
+			display: flex;
+			gap: #{utility.rem(24)};
+			justify-content: flex-end;
+			align-items: center;
+			margin: 0;
+			padding: 0 0 0 #{utility.rem(24)};
+			list-style: none;
+
+			li {
+				color: var(--primary-text);
+				font-weight: 400;
+				font-style: normal;
+				font-size: #{utility.rem(24)};
+				line-height: 130%; /* 31.2px */
+				a {
+					color: inherit;
+					font: inherit;
+
+					&:not(&:hover) {
+						text-decoration: none;
+					}
+
+					@include utility.has-hover {
+						color: var(--brand-color);
+					}
+				}
+			}
+
+			@include breakpoints.media-down('xl') {
+				display: grid;
+			}
+		}
+	}
+
 	@include breakpoints.media-down('xl') {
 		& &__container {
 			margin: #{utility.rem(12)} auto;
@@ -145,16 +211,31 @@ watch(isOpen, (value) => {
 
 		& &__content {
 			display: none;
+			gap: #{utility.rem(8)};
+			border-radius: #{utility.rem(32)};
+			border-top-left-radius: #{utility.rem(12)};
+			border-top-right-radius: #{utility.rem(12)};
 			visibility: hidden;
+		}
+
+		& &__navigation {
+			ul {
+				justify-content: flex-start;
+				padding: #{utility.rem(16)};
+
+				li {
+					font-size: #{utility.rem(20)};
+				}
+			}
 		}
 	}
 
 	&#{$self}--is-open {
 		#{$self}__content {
-			display: flex;
-			justify-content: center;
+			display: grid;
 			visibility: visible;
 		}
+
 		#{$self}__theme {
 			flex: 1;
 		}

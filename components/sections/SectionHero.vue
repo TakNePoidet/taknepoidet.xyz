@@ -60,7 +60,7 @@ import MotionScroll from '~/components/utils/MotionScroll.vue';
 				</motion-scroll>
 			</div>
 
-			<motion-scroll class="section-hero-content__text">
+			<motion-scroll id="about" class="section-hero-content__text">
 				<p>
 					Я&nbsp;&mdash; Fullstack-разработчик, люблю фотографировать, кататься на&nbsp;велосипеде и&nbsp;всякое-разное
 				</p>

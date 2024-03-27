@@ -23,7 +23,7 @@ const canonical = computed(() => host.value);
 		<section-hero />
 		<section-contacts />
 		<section-development-skills />
-		<section-portfolio />
-		<section-inventory />
+		<section-portfolio id="portfolio" />
+		<section-inventory id="inventory" />
 	</base-page>
 </template>
