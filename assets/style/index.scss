@@ -5,11 +5,24 @@
 
 body,
 html {
-	height: max(100%, 100vh);
-	min-height: 100%;
+	//height: max(100%, 100vh);
+	//min-height: 100%;
 	background: var(--blank-fill);
 	color: var(--primary-text);
 	font-family: Manrope, sans-serif;
+}
+
+//body,
+//html {
+//	background-color: #f8f8fa;
+//	font-size: 16px;
+//	font-family: Manrope, sans-serif;
+//	text-size-adjust: none;
+//	scrollbar-gutter: stable;
+//}
+
+html {
+	//overflow-x: hidden;
 }
 
 @import 'production';
@@ -26,12 +39,4 @@ html {
 
 html.overflow-hidden {
 	overflow: hidden;
-	height: 100vh;
-
-	body {
-		position: fixed;
-		inset: var(--overlay-scroll-position) 0 0 0;
-		overflow: hidden;
-		padding-right: var(--scroll-width-offset);
-	}
 }
