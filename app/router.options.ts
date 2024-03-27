@@ -16,20 +16,17 @@ export default <RouterOptions>{
 	},
 	scrollBehavior(to, from, savedPosition) {
 		const nuxtApp = useNuxtApp();
-
+		const $header = document.getElementById('header');
+		const { height } = $header!.getBoundingClientRect();
 		if (to.meta.name !== from.meta.name) {
 			return new Promise((resolve) => {
 				nuxtApp.hooks.hookOnce('page:finish', () => {
 					setTimeout(() => {
-						const $header = document.getElementById('header');
-						const { height } = $header!.getBoundingClientRect();
-
 						if (to.hash || savedPosition) {
 							if (to.hash) {
 								resolve({
 									el: to.hash,
-									left: 0,
-									top: height,
+									top: height * 1.5,
 									behavior: 'smooth'
 								});
 							} else {
@@ -45,7 +42,7 @@ export default <RouterOptions>{
 		if (to.hash) {
 			return {
 				el: to.hash,
-				left: 0,
+				top: height * 1.5,
 				behavior: 'smooth'
 			};
 		}
