@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useColorMode, useNamespace, watch } from '#imports';
+import { computed, nextTick, onMounted, ref, useColorMode, useNamespace, watch } from '#imports';
 
 const $colorMode = useColorMode();
 
@@ -22,10 +22,20 @@ const items = computed(() => [
 	}
 ]);
 
-const active = computed(() => $colorMode.preference);
+const active = ref('');
 
 const { component, base } = useNamespace('theme-switcher');
 
+onMounted(() => {
+	if (process.client) {
+		nextTick(() => (active.value = $colorMode.preference));
+	}
+});
+
+watch(
+	() => $colorMode.preference,
+	(value) => (active.value = value)
+);
 watch(
 	() => $colorMode.value,
 	() => {
@@ -40,21 +50,19 @@ watch(
 </script>
 
 <template>
-	<client-only>
-		<section :class="[base()]" v-bind="$attrs">
-			<button
-				v-for="{ value, title } in items"
-				:key="value"
-				type="button"
-				:value="value"
-				:aria-pressed="active === value"
-				@click="setPreference(value)"
-			>
-				{{ title }}
-			</button>
-			<div :class="[component('indicator')]" />
-		</section>
-	</client-only>
+	<section :class="[base()]" v-bind="$attrs">
+		<button
+			v-for="{ value, title } in items"
+			:key="value"
+			type="button"
+			:value="value"
+			:aria-pressed="active === value"
+			@click="setPreference(value)"
+		>
+			{{ title }}
+		</button>
+		<div :class="[component('indicator')]" />
+	</section>
 </template>
 
 <style scoped lang="scss">
@@ -109,6 +117,7 @@ watch(
 		display: block;
 		border-radius: #{utility.rem(32)};
 		background-color: var(--brand-color);
+		opacity: 0;
 		transition:
 			left var(--transition-animation),
 			width var(--transition-animation);
@@ -118,6 +127,7 @@ watch(
 	button[value='system'][aria-pressed='true'] ~ &__indicator,
 	button[value='dark'][aria-pressed='true'] ~ &__indicator {
 		width: calc((100% - #{utility.rem(4 * 2)}) / 3);
+		opacity: 1;
 	}
 
 	button[value='system'][aria-pressed='true'] ~ &__indicator {
