@@ -36,7 +36,7 @@ onBeforeMount(() => {
 		<h1>404</h1>
 		<div class="error-404__content">
 			<base-picture preload alt="Я" :height="256" :width="256" src="/images/404.png" />
-			<nuxt-link :to="{ name: Page.Home }">На главную <base-icon name="link" /></nuxt-link>
+			<a href="/">На главную <base-icon name="link" /></a>
 		</div>
 	</div>
 </template>
