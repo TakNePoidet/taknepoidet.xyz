@@ -176,6 +176,7 @@ onMounted(() => {
 <style scoped lang="scss">
 @use 'assets/style/utility';
 @use 'assets/style/breakpoints';
+@use 'assets/style/focus-visible';
 
 .section.section-developments-skills {
 	position: relative;
@@ -302,10 +303,20 @@ onMounted(() => {
 				text-decoration: none;
 
 				&::after {
+					@include focus-visible.setup;
+
 					content: '';
 					position: absolute;
 					inset: 0;
 					border-radius: #{utility.rem(12)};
+				}
+
+				&:focus-visible {
+					@include focus-visible.disabled;
+
+					&::after {
+						@include focus-visible.active;
+					}
 				}
 			}
 

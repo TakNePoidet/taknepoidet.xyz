@@ -69,6 +69,7 @@ const favorites = computed<ModelPortfolio[]>(() => {
 <style lang="scss" scoped>
 @use 'assets/style/utility';
 @use 'assets/style/breakpoints';
+@use 'assets/style/focus-visible';
 
 .section-portfolio-content {
 	display: grid;
@@ -85,7 +86,6 @@ const favorites = computed<ModelPortfolio[]>(() => {
 	.open-source-preview,
 	.portfolio-preview {
 		order: 999;
-		overflow: hidden;
 		border-radius: #{utility.rem(12)};
 
 		@include breakpoints.media-down('xl') {
@@ -94,15 +94,23 @@ const favorites = computed<ModelPortfolio[]>(() => {
 	}
 
 	.portfolio-preview {
+		a {
+			display: block;
+			height: 100%;
+			border-radius: inherit;
+		}
+
 		:deep(.picture) {
 			width: 100%;
 			height: 100%;
+			border-radius: inherit;
 		}
 
 		:deep(.picture) img {
 			object-fit: cover;
 			width: 100%;
 			height: 100%;
+			border-radius: inherit;
 		}
 
 		@include breakpoints.media-up('xl') {
@@ -166,10 +174,20 @@ const favorites = computed<ModelPortfolio[]>(() => {
 			}
 
 			&::after {
+				@include focus-visible.setup;
+
 				content: '';
 				position: absolute;
 				inset: 0;
 				border-radius: #{utility.rem(12)};
+			}
+
+			&:focus-visible {
+				@include focus-visible.disabled;
+
+				&::after {
+					@include focus-visible.active;
+				}
 			}
 
 			@include breakpoints.media-down('xl') {
