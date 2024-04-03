@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { setResponseHeaders } from 'h3';
+import { type H3Event, setResponseHeaders } from 'h3';
 import type { PropType } from 'vue';
 
 import { useRequestEvent } from '#imports';
@@ -12,7 +12,7 @@ const props = defineProps({
 });
 
 if (!process.client && props.canonical) {
-	const event = useRequestEvent();
+	const event = useRequestEvent() as unknown as H3Event;
 
 	setResponseHeaders(event, {
 		Link: `<${props.canonical}>; rel="canonical"`

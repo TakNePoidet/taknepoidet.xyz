@@ -30,7 +30,7 @@ defineProps({
 				{{ article.title }}
 			</h3>
 			<ul v-if="article.tags.length > 0" class="portfolio__tags">
-				<li v-for="tag in article.tags.values()" :key="tag.key">
+				<li v-for="tag in article.tags" :key="tag.key">
 					<nuxt-link :to="{ name: Page.PortfolioListingTag, params: { tag: tag.key } }"> #{{ tag.title }} </nuxt-link>
 				</li>
 			</ul>

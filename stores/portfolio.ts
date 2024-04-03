@@ -109,8 +109,8 @@ export const usePortfolioStore = defineStore('portfolio', () => {
 					...content,
 					date: new Date(content.date),
 					openSource: content.openSource ?? false,
-					tags: content.tags.map((tag) => tags.get(<Tag>tag))
-				} as ModelPortfolio;
+					tags: content.tags.map((tag) => tags.get(<Tag>tag) as ModelTag)
+				} as unknown as ModelPortfolio;
 			})
 			.sort((a, b) => {
 				return a.date > b.date ? -1 : 1;
