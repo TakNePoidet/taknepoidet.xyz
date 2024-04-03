@@ -16,7 +16,7 @@ await useAsyncData('portfolios', portfolioStore.fetch);
 const { portfolios } = storeToRefs(portfolioStore);
 
 const favorites = computed<ModelPortfolio[]>(() => {
-	const list = ['pr-liz', 'studio-banan', 'ufa-450', 'beside'];
+	const list = ['pr-liz', 'studio-banan', 'ufa-450', 'i-calendar'];
 
 	return portfolios.value
 		.filter(({ slug }) => {

@@ -41,7 +41,8 @@ export const enum Tag {
 	'Node' = 'node',
 	'Ffmpeg' = 'ffmpeg',
 	'Python' = 'python',
-	'OpenSource' = 'open-source'
+	'OpenSource' = 'open-source',
+	'AlpineJs' = 'alpine-js'
 }
 
 const tags = new Map<Tag, ModelTag>();
@@ -56,6 +57,7 @@ tags.set(Tag.Ffmpeg, { key: Tag.Ffmpeg, title: 'Ffmpeg', aliases: [] });
 tags.set(Tag.PHP, { key: Tag.PHP, title: 'PHP', aliases: [Tag.Laravel, Tag.Bitrix, Tag.Wordpress] });
 tags.set(Tag.Scss, { key: Tag.Scss, title: 'Scss', aliases: [Tag.Css, Tag.Nuxt, Tag.Vue] });
 tags.set(Tag.TypeScript, { key: Tag.TypeScript, title: 'TypeScript', aliases: [Tag.JavaScript] });
+tags.set(Tag.AlpineJs, { key: Tag.AlpineJs, title: 'AlpineJs', aliases: [Tag.JavaScript] });
 tags.set(Tag.Vue, {
 	key: Tag.Vue,
 	title: 'Vue',
