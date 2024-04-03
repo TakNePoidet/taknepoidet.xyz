@@ -17,7 +17,7 @@ export default <RouterOptions>{
 	scrollBehavior(to, from, savedPosition) {
 		const nuxtApp = useNuxtApp();
 		const $header = document.getElementById('header');
-		const { height } = $header!.getBoundingClientRect();
+		const height = $header?.getBoundingClientRect()?.height ?? 0;
 		if (to.meta.name !== from.meta.name) {
 			return new Promise((resolve) => {
 				nuxtApp.hooks.hookOnce('page:finish', () => {

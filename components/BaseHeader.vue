@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { templateRef, useToggle } from '@vueuse/core';
 
-import { useBodyScrollLock, useFocusTrap, useWindowSize, watch } from '#imports';
+import { useBodyScrollLock, useFocusTrap, useRoute, useWindowSize, watch } from '#imports';
 import BaseLogo from '~/components/BaseLogo.vue';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import ThemeSwitcher from '~/components/elements/ThemeSwitcher.vue';
@@ -45,17 +45,40 @@ watch(useWindowSize().width, (value, oldValue) => {
 		close();
 	}
 });
+
+function scrollTop() {
+	if (!process.client) {
+		return undefined;
+	}
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	});
+}
+
+const route = useRoute();
+function action() {
+	if (route.path === '/') {
+		setTimeout(() => {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
+		}, 0);
+	}
+}
 </script>
 
 <template>
 	<header id="header" ref="$el" :class="[ns.base(), ns.is('open', isOpen)]">
+		<button class="header__action" tabindex="-1" @click="scrollTop"></button>
 		<div :class="[ns.component('container')]">
 			<div :class="[ns.component('controller')]">
 				<button type="button" :class="[ns.component('bar')]" @click.stop="toggle()">
 					<base-icon name="bar" style="width: 44px" />
 					<sr-only>Меню</sr-only>
 				</button>
-				<nuxt-link href="/" :class="[ns.component('logo')]">
+				<nuxt-link href="/" :class="[ns.component('logo')]" @click="action">
 					<base-logo />
 					<sr-only>TakNePoidet</sr-only>
 				</nuxt-link>
@@ -95,6 +118,15 @@ watch(useWindowSize().width, (value, oldValue) => {
 	background-color: var(--blank-fill--о90);
 	backdrop-filter: blur(10px);
 
+	& &__action {
+		position: absolute;
+		inset: 0;
+		padding: 0;
+		opacity: 0;
+
+		//appearance: none;
+	}
+
 	> canvas {
 		z-index: -1;
 	}
@@ -131,6 +163,10 @@ watch(useWindowSize().width, (value, oldValue) => {
 	}
 
 	& &__logo {
+		position: relative;
+		z-index: 1;
+		display: block;
+
 		.logo {
 			display: block;
 			height: #{utility.rem(64)};
@@ -146,6 +182,9 @@ watch(useWindowSize().width, (value, oldValue) => {
 	}
 
 	& &__navigation {
+		position: relative;
+		z-index: 1;
+
 		ul {
 			display: flex;
 			gap: #{utility.rem(24)};
