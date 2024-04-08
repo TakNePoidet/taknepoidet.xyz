@@ -9,7 +9,7 @@ import SrOnly from '~/components/utils/SrOnly.vue';
 import { useNamespace } from '~/composables/useNamespace';
 import { useSignal } from '~/composables/useSignal';
 
-const { active, lock } = useBodyScrollLock();
+const { unlock, lock } = useBodyScrollLock();
 const ns = useNamespace('header');
 const [isOpen, setIsOpen] = useSignal(false);
 
@@ -33,7 +33,7 @@ watch(isOpen, (value) => {
 		lock();
 	} else {
 		deactivate();
-		active();
+		unlock();
 	}
 });
 

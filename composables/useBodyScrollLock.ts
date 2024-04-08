@@ -1,5 +1,4 @@
 import { useEventListener } from '@vueuse/core';
-import { computed } from 'vue';
 
 import { useSignal } from '~/composables/useSignal';
 
@@ -22,7 +21,7 @@ export function useBodyScrollLock() {
 		}
 	}
 
-	function active() {
+	function unlock() {
 		stack -= 1;
 		if (stack < 0) {
 			stack = 0;
@@ -36,6 +35,6 @@ export function useBodyScrollLock() {
 
 	return {
 		lock,
-		active
+		unlock
 	};
 }
