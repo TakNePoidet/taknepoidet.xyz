@@ -1,10 +1,54 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, useColorMode, useNamespace, watch } from '#imports';
+import { computed, nextTick, onMounted, ref, useBodyScrollLock, useColorMode, useNamespace, watch } from '#imports';
 
 const $colorMode = useColorMode();
+const isDark = computed(() => $colorMode.value === 'dark');
 
-function setPreference(value: string) {
-	$colorMode.preference = value;
+const { unlock, lock } = useBodyScrollLock();
+
+function setPreference(value: string, event?: MouseEvent) {
+	const x = event?.clientX ?? window.screen.availWidth / 2;
+	const y = event?.clientY ?? window.screen.availHeight / 2;
+	const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+	const query = window.matchMedia('(prefers-color-scheme: dark)');
+	const system = query.matches ? 'dark' : 'light';
+	const isSwitch = (() => {
+		if (value === 'system') {
+			return $colorMode.value !== system;
+		} else {
+			return $colorMode.value !== value;
+		}
+	})();
+
+	if (!isSwitch) {
+		$colorMode.preference = value;
+		return undefined;
+	}
+	// @ts-expect-error: Transition API
+	const transition = document.startViewTransition(async () => {
+		$colorMode.preference = value;
+		await nextTick();
+	});
+
+	lock();
+	transition.ready.then(() => {
+		const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`];
+		document.documentElement
+			.animate(
+				{
+					overflow: 'hidden',
+					clipPath: isDark.value ? [...clipPath].reverse() : clipPath
+				},
+				{
+					duration: 400,
+					easing: 'ease-in',
+					pseudoElement: isDark.value ? '::view-transition-old(root)' : '::view-transition-new(root)'
+				}
+			)
+			.finished.then(() => {
+				unlock();
+			});
+	});
 }
 
 const items = computed(() => [
@@ -36,17 +80,6 @@ watch(
 	() => $colorMode.preference,
 	(value) => (active.value = value)
 );
-watch(
-	() => $colorMode.value,
-	() => {
-		if (process.client) {
-			document.documentElement.classList.add('theme-change-animation');
-			setTimeout(() => {
-				document.documentElement.classList.remove('theme-change-animation');
-			}, 200);
-		}
-	}
-);
 </script>
 
 <template>
@@ -57,7 +90,7 @@ watch(
 			type="button"
 			:value="value"
 			:aria-pressed="active === value"
-			@click="setPreference(value)"
+			@click="setPreference(value, $event)"
 		>
 			{{ title }}
 		</button>
@@ -171,9 +204,5 @@ watch(
 			left: calc(#{utility.rem(2)} + (100% - #{utility.rem(2 * 2)}) / 3 * 2);
 		}
 	}
-}
-
-html.theme-change-animation * {
-	transition: all var(--transition-animation);
 }
 </style>
