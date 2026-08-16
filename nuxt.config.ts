@@ -50,6 +50,11 @@ export default defineNuxtConfig({
 			Manrope: [400, 500, 600, 700, 800]
 		}
 	},
+	colorMode: {
+		// v4 changed the default to '' (`.dark` / `.light`); the theme variables in
+		// assets/style/variables.scss are written against `.light-mode` / `.dark-mode`.
+		classSuffix: '-mode'
+	},
 	robots: {
 		credits: false
 	},
