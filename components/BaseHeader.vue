@@ -132,6 +132,7 @@ function action() {
 	}
 
 	& &__bar {
+		appearance: none;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -142,7 +143,6 @@ function action() {
 		border: 0;
 		background: transparent;
 		color: var(--primary-text);
-		appearance: none;
 
 		.icon {
 			width: #{utility.rem(32)};

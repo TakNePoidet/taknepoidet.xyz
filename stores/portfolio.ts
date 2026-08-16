@@ -26,22 +26,22 @@ export interface ModelPortfolio {
 }
 
 export enum Tag {
-	'HTML' = 'html',
-	'Css' = 'css',
-	'JavaScript' = 'javascript',
-	'Nuxt' = 'nuxt',
-	'Vue' = 'vue',
-	'Scss' = 'scss',
-	'TypeScript' = 'typescript',
-	'PHP' = 'php',
-	'Laravel' = 'laravel',
-	'Wordpress' = 'wordpress',
-	'Bitrix' = 'bitrix',
-	'Node' = 'node',
-	'Ffmpeg' = 'ffmpeg',
-	'Python' = 'python',
-	'OpenSource' = 'open-source',
-	'AlpineJs' = 'alpine-js'
+	HTML = 'html',
+	Css = 'css',
+	JavaScript = 'javascript',
+	Nuxt = 'nuxt',
+	Vue = 'vue',
+	Scss = 'scss',
+	TypeScript = 'typescript',
+	PHP = 'php',
+	Laravel = 'laravel',
+	Wordpress = 'wordpress',
+	Bitrix = 'bitrix',
+	Node = 'node',
+	Ffmpeg = 'ffmpeg',
+	Python = 'python',
+	OpenSource = 'open-source',
+	AlpineJs = 'alpine-js'
 }
 
 const tags = new Map<Tag, ModelTag>();

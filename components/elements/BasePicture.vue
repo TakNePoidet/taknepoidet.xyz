@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { templateRef } from '@vueuse/core';
 import { createPlaceholderFromHash } from 'unlazy';
-import { type PropType, type Ref, readonly } from 'vue';
+import type { PropType, Ref } from 'vue';
+import { readonly } from 'vue';
 
 import { computed, ref, useVisible } from '#imports';
 import { useNuxtImage } from '~/composables/useNuxtImage';

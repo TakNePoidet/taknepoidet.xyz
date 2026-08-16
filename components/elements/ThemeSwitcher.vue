@@ -111,6 +111,7 @@ watch(
 	border-radius: #{utility.rem(32)};
 
 	button {
+		appearance: none;
 		position: relative;
 		z-index: 1;
 		padding: 0 #{utility.rem(16)};
@@ -123,7 +124,6 @@ watch(
 		font-family: inherit;
 		line-height: 130%;
 		text-align: center;
-		appearance: none;
 
 		&[aria-pressed='true'] {
 			color: var(--brand-color-invert);

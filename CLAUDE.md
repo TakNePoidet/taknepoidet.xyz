@@ -32,8 +32,9 @@ pnpm preview         # preview a production build
 mode also pulls in `assets/style/production.scss` and the `postcss-preset-env` autoprefixer, so a
 type error or a production-only style regression fails the build, not the dev server.
 
-`.editorconfig` is a **symlink into `node_modules/@poidet/editorconfig`** — it is broken until
-`pnpm install` has run. Don't "fix" it by replacing it with a real file.
+`.editorconfig`, `.prettierrc.cjs` and `stylelint.config.mjs` are plain checked-in files — they no
+longer proxy the `@poidet/*` config packages, so they work before `pnpm install` and can be edited
+directly.
 
 A husky `pre-commit` hook runs `lint-staged` (stylelint → eslint → prettier, `--concurrent false`),
 so staged files are auto-fixed on commit. It does **not** typecheck — run `pnpm test` yourself.
@@ -181,8 +182,8 @@ Generate `thumbhash` values with the author's own `TakNePoidet/thumbhash-cli`.
 - Class names follow BEM via the `useNamespace('block')` composable: `base()` → `block`,
   `component('title')` → `block__title`, `modifier('x')`, `is('open', bool)`. Styles are `scoped` and
   written as `& &__title { … }` with `$self: &` for nesting; cross-component reach-in uses `:deep()`.
-- Stylelint extends `@poidet/stylelint`, which enforces property order — run `pnpm lint:fix` rather
-  than reordering by hand.
+- Stylelint composes `stylelint-config-standard-scss` + `stylelint-config-hudochenkov/order`, which
+  enforces property order — run `pnpm lint:fix` rather than reordering by hand.
 
 Sass prints deprecation warnings for `@import` and the `if()` function, coming from
 `taknepoidet-scss-starter` and `breakpoints.scss`. They are warnings, not build failures.
@@ -191,7 +192,7 @@ Sass prints deprecation warnings for `@import` and the `if()` function, coming f
 
 - `components/utils/Seo.vue` — every page renders one. It appends `| TakNePoidet` to the title unless
   `:template="false"`, and emits OG/Twitter/VK meta. `Canonical.vue` additionally sets a
-  `Link: rel=canonical` **response header** server-side via `h3`.
+  `Link: rel=canonical` **response header** server-side via Nuxt's `useResponseHeader()`.
 - `components/elements/BasePicture.vue` — the image primitive. `width`/`height` are required (its
   prop defaults `throw`), it builds `srcset` through `@nuxt/image` + `useNuxtImage()`, lazies via
   `useVisible` (IntersectionObserver) and paints a `thumbhash` placeholder via `unlazy`. Use it
@@ -229,15 +230,22 @@ defineProps({
 ESLint uses **flat config** (`eslint.config.mjs`); `.eslintrc.cjs`/`.eslintignore` are gone and the
 `--ext` flag no longer exists. The config composes two sources:
 
-- `@poidet/eslint-config` — the author's house style (built on `@antfu/eslint-config`): tabs, single
-  quotes, semicolons, import sorting, Vue + a11y rules.
+- `@antfu/eslint-config` — used directly, with `stylistic: false` so **Prettier owns all formatting**
+  (`eslint-plugin-prettier/recommended` is appended, and `prettier -c .` runs in `pnpm lint`).
+  Import order comes from `eslint-plugin-simple-import-sort`, with antfu's `perfectionist/sort-imports`
+  and `import/order` switched off so only one rule sorts statements.
 - `@nuxt/eslint`, whose generated `.nuxt/eslint.config.mjs` adds the Nuxt-aware rules. It is
   configured with `standalone: false` in `nuxt.config.ts` so it does not ship its own Vue/import
   plugin instances — two instances of the same plugin is a hard error in flat config.
 
-The `project/overrides` block at the bottom exists for real incompatibilities, not preference:
-`vue/no-multiple-template-root` is off because `@nuxt/eslint` targets eslint-plugin-vue 10 while
-`@poidet/eslint-config` pins 9, whose schema for that rule takes no options.
+The three `@poidet/*` lint configs were **removed** in favour of the upstream packages they wrapped:
+they pinned `@antfu/eslint-config` 2, `eslint-plugin-vue` 9 and an old
+`@awmottaz/prettier-plugin-void-html`, which capped ESLint at 9, Prettier at 3.7 and stylelint at 16.
+`stylelint.config.mjs` and `.prettierrc.cjs` now inline what those packages exported, and
+`.editorconfig` is a plain checked-in file rather than a symlink into `node_modules`.
+
+Do not reach for `@poidet/eslint-config-nuxt`: every published version (including 0.8.4) ships a
+`package.json` whose `files` field excludes `dist/`, so the tarball contains no code at all.
 
 Because the config imports `./.nuxt/eslint.config.mjs`, linting requires a prepared project. `pnpm
 install` covers this through the `postinstall` hook; after deleting `.nuxt`, run `pnpm exec nuxt
@@ -251,24 +259,22 @@ that antfu's config renames the TypeScript rules: it is `ts/no-non-null-assertio
 `@typescript-eslint/no-non-null-assertion` — a stale prefix is reported as "definition for rule not
 found".
 
-`@poidet/eslint-config-nuxt` is **not** usable: every published version (including 0.8.4) ships a
-`package.json` whose `files` field excludes `dist/`, so the tarball contains no code. Use the two
-packages above instead.
-
 ## Version ceilings
 
-These are pinned below latest because a dependency genuinely cannot handle the newer major. Re-check
-before bumping:
+Everything is on latest except **TypeScript**, which stays on 5.9 while 7.x is out. This is not a
+config choice and cannot be worked around by swapping packages:
 
-| Package      | Pinned | Latest | Blocker                                                                      |
-| ------------ | ------ | ------ | ---------------------------------------------------------------------------- |
-| `typescript` | 5.9    | 7.x    | `@typescript-eslint` requires `<6.1.0`                                       |
-| `eslint`     | 9      | 10.x   | `eslint-plugin-vue` 9 (via `@antfu/eslint-config` 2) caps at 9               |
-| `prettier`   | 3.7    | 3.9    | `@awmottaz/prettier-plugin-void-html` (via `@poidet/prettier`) caps at 3.7.x |
-| `stylelint`  | 16     | 17.x   | `@poidet/stylelint` peer is `^16.3.4`                                        |
-| `h3`         | 1.x    | 2.x-rc | Nitro 2 is on h3 1; npm's `latest` tag is a prerelease                       |
+- `vue-tsc` (3.3.x, the only Vue type checker, and what `pnpm test:types` runs) loads
+  `typescript/lib/tsc`, a subpath TypeScript 7 no longer exports. It crashes immediately with
+  `ERR_PACKAGE_PATH_NOT_EXPORTED`.
+- `typescript-eslint` (8.67, latest) declares `typescript: >=4.8.4 <6.1.0`.
 
-`@nuxt/devtools` is no longer a direct dependency — Nuxt 4 bundles it.
+Re-test TypeScript 7 once `vue-tsc` ships support; nothing else in the tree holds it back.
+
+Two dependencies were dropped rather than pinned: `@nuxt/devtools` (Nuxt 4 bundles it) and `h3`
+(`Canonical.vue` now uses Nuxt's own `useResponseHeader()` instead of importing `setResponseHeaders`,
+so the project no longer depends on h3 directly — npm's `latest` h3 tag is a 2.x prerelease while
+Nitro 2 is on 1.x).
 
 ## Environment & deployment
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { type PropType, computed } from 'vue';
+import type { PropType } from 'vue';
+import { computed } from 'vue';
 
 import Canonical from '~/components/utils/Canonical.vue';
 

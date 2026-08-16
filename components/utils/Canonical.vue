@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { type H3Event, setResponseHeaders } from 'h3';
 import type { PropType } from 'vue';
 
-import { useRequestEvent } from '#imports';
+import { useResponseHeader } from '#imports';
 
 const props = defineProps({
 	canonical: {
@@ -11,12 +10,8 @@ const props = defineProps({
 	}
 });
 
-if (!import.meta.client && props.canonical) {
-	const event = useRequestEvent() as unknown as H3Event;
-
-	setResponseHeaders(event, {
-		Link: `<${props.canonical}>; rel="canonical"`
-	});
+if (import.meta.server && props.canonical) {
+	useResponseHeader('Link').value = `<${props.canonical}>; rel="canonical"`;
 }
 </script>
 

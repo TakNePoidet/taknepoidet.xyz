@@ -40,11 +40,9 @@ const filtered = computed(() => {
 	if (tag.value && tags.value.get(tag.value)) {
 		const { aliases } = tags.value.get(tag.value)!;
 		return portfolios.value.filter((portfolio) => {
-			return (
-				portfolio.tags.filter(({ key }) => {
-					return aliases.includes(key) || key === tag.value;
-				}).length >= 1
-			);
+			return portfolio.tags.some(({ key }) => {
+				return aliases.includes(key) || key === tag.value;
+			});
 		});
 	}
 	return portfolios.value;

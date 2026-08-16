@@ -3,7 +3,7 @@ import { templateRef } from '@vueuse/core';
 import { animate, scroll } from 'motion';
 import { storeToRefs } from 'pinia';
 
-import { Page, computed, onMounted } from '#imports';
+import { computed, onMounted, Page } from '#imports';
 import BaseSection from '~/components/BaseSection.vue';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';

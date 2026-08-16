@@ -71,7 +71,6 @@ const stars = computed(() => {
 	padding: #{utility.rem(32 * 1.5)} #{utility.rem(32)};
 	border-radius: #{utility.rem(12)};
 	background: var(--brand-color);
-	background-color: var(--brand-color);
 
 	> hr {
 		width: 100%;
@@ -98,8 +97,8 @@ const stars = computed(() => {
 		font-weight: 700;
 		font-style: normal;
 		font-size: #{utility.rem(32)};
-		line-height: 130%; /* 41.6px */
 		font-kerning: none;
+		line-height: 130%; /* 41.6px */
 
 		h2 {
 			margin: 0;

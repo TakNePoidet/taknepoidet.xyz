@@ -64,6 +64,7 @@ const { $container, $summary, $content, toggle, isOpen } = useCollapse(open);
 	transition: margin-top var(--transition-animation);
 
 	& &__summary {
+		appearance: none;
 		display: flex;
 		gap: #{utility.rem(16)};
 		justify-content: space-between;
@@ -72,8 +73,8 @@ const { $container, $summary, $content, toggle, isOpen } = useCollapse(open);
 		border: 1px solid var(--base-border);
 		border-radius: #{utility.rem(16)};
 		background: var(--lighter-fill);
-		color: var(--regular-text);
 		list-style: none;
+		color: var(--regular-text);
 		font-weight: 500;
 		font-size: #{utility.rem(64)};
 		line-height: 100%; /* 64px */
@@ -82,7 +83,6 @@ const { $container, $summary, $content, toggle, isOpen } = useCollapse(open);
 			background-color var(--transition-animation),
 			color var(--transition-animation),
 			border-radius var(--transition-animation);
-		appearance: none;
 
 		&::-webkit-details-marker {
 			display: none;

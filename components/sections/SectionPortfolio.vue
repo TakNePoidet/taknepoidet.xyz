@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 
 import { useAsyncData } from '#app';
-import { Page, computed } from '#imports';
+import { computed, Page } from '#imports';
 import BaseSection from '~/components/BaseSection.vue';
 import BasePicture from '~/components/elements/BasePicture.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';

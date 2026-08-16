@@ -97,11 +97,11 @@ const show = throttle(() => {
 		align-items: center;
 
 		> button {
+			appearance: none;
 			margin: 0;
 			padding: 0;
 			border: 0;
 			background: transparent;
-			appearance: none;
 		}
 	}
 

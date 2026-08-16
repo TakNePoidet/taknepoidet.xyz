@@ -86,8 +86,8 @@ defineProps({
 		align-items: flex-start;
 		margin: 0;
 		padding: 0;
-		color: var(--regular-text);
 		list-style: none;
+		color: var(--regular-text);
 		font-weight: 500;
 		font-size: #{utility.rem(32)};
 		line-height: 130%; /* 41.6px */
