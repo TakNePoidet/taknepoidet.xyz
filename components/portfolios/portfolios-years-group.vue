@@ -46,7 +46,7 @@ const { $container, $summary, $content, toggle, isOpen } = useCollapse(open);
 				</svg>
 			</div>
 
-			<div ref="$items" class="years-group-portfolios__items">
+			<div class="years-group-portfolios__items">
 				<listing :items="items" />
 			</div>
 		</div>

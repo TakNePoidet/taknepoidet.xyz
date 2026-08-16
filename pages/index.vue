@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, definePageMeta, Page } from '#imports';
+import { Page, computed, definePageMeta } from '#imports';
 import BasePage from '~/components/BasePage.vue';
 import SectionContacts from '~/components/sections/SectionContacts.vue';
 import SectionDevelopmentSkills from '~/components/sections/SectionDevelopmentSkills.vue';

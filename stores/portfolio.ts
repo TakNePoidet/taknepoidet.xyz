@@ -1,15 +1,6 @@
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
 import { defineStore } from 'pinia';
 
-import { computed, queryContent, ref } from '#imports';
-
-interface Content extends ParsedContent {
-	date: string;
-	cover?: string;
-	permalink?: string;
-	tags: string[];
-	openSource?: boolean;
-}
+import { computed, queryCollection, ref } from '#imports';
 
 export interface ModelTag {
 	key: Tag;
@@ -17,16 +8,24 @@ export interface ModelTag {
 	aliases: Tag[];
 }
 
-export interface ModelPortfolio extends ParsedContent {
+/**
+ * Deliberately not derived from `PortfoliosCollectionItem`: that type carries the
+ * recursive Minimark `body` tree, which we never render and which makes TypeScript
+ * bail out with "type instantiation is excessively deep".
+ */
+export interface ModelPortfolio {
+	id: string;
+	title: string;
 	date: Date;
 	slug: string;
+	openSource: boolean;
 	cover?: string;
 	thumbhash?: string;
 	permalink?: string;
 	tags: ModelTag[];
 }
 
-export const enum Tag {
+export enum Tag {
 	'HTML' = 'html',
 	'Css' = 'css',
 	'JavaScript' = 'javascript',
@@ -102,15 +101,20 @@ export const usePortfolioStore = defineStore('portfolio', () => {
 	const portfolios = ref<ModelPortfolio[]>([]);
 
 	const fetch = async () => {
-		const data = await queryContent<Content>('portfolios').find();
+		const data = await queryCollection('portfolios').all();
 		portfolios.value = data
-			.map((content) => {
+			.map<ModelPortfolio>((content) => {
 				return {
-					...content,
+					id: content.id,
+					title: content.title,
+					slug: content.slug,
 					date: new Date(content.date),
+					cover: content.cover,
+					thumbhash: content.thumbhash,
+					permalink: content.permalink,
 					openSource: content.openSource ?? false,
-					tags: content.tags.map((tag) => tags.get(<Tag>tag) as ModelTag)
-				} as unknown as ModelPortfolio;
+					tags: content.tags.map((tag) => tags.get(<Tag>tag)).filter((tag): tag is ModelTag => tag !== undefined)
+				};
 			})
 			.sort((a, b) => {
 				return a.date > b.date ? -1 : 1;

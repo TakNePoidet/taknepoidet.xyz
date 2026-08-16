@@ -8,3 +8,10 @@ node_modules
 dist
 .DS_Store
 .idea
+
+# @nuxt/content v3 local SQLite database
+.data
+
+# linter caches
+.eslintcache
+.stylelintcache

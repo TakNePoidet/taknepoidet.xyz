@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { MotionKeyframesDefinition } from '@motionone/dom';
 import { animate, scroll } from 'motion';
+import type { DOMKeyframesDefinition } from 'motion-dom';
 import type { PropType } from 'vue';
 
 import { onMounted, templateRef } from '#imports';
 
 const { keyframes } = defineProps({
 	keyframes: {
-		type: Object as PropType<MotionKeyframesDefinition>,
+		type: Object as PropType<DOMKeyframesDefinition>,
 		default() {
 			return { opacity: [0, 1], y: [0, 0], scale: [0.9, 1], filter: ['blur(20px)', 'blur(0px)'] };
 		}

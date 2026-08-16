@@ -1,50 +1,38 @@
-# Nuxt 3 Minimal Starter
+# taknepoidet.xyz
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Персональный сайт Якина Никиты. Nuxt 4 + Vue 3 + TypeScript, статическая генерация в nginx-образ.
 
-## Setup
+## Требования
 
-Make sure to install the dependencies:
+- Node.js >= 20.19
+- pnpm 10 (`corepack enable`)
+
+## Установка
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
 pnpm install
 ```
 
-## Development Server
-
-Start the development server on http://localhost:3000
+## Разработка
 
 ```bash
-npm run dev
+pnpm dev          # http://localhost:3000
 ```
 
-## Production
-
-Build the application for production:
+## Проверки
 
 ```bash
-npm run build
+pnpm test         # линтеры + проверка типов
+pnpm lint         # stylelint + eslint + prettier (только проверка)
+pnpm lint:fix     # то же самое с автоисправлением
+pnpm test:types   # nuxt typecheck (vue-tsc)
 ```
 
-Locally preview production build:
+## Сборка
 
 ```bash
-npm run preview
+pnpm generate     # статическая генерация в .output/public
+pnpm preview      # предпросмотр сборки
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Beautifier
-
-Format the code
-
-```bash
-npm run beautifier
-```
+Переменные окружения: `NUXT_PUBLIC_SITE_URL`, `SITE`, `VITE_YANDEX_METRICA`, `VITE_YANDEX_VERIFICATION`.

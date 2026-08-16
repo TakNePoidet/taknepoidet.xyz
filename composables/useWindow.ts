@@ -1,5 +1,5 @@
 import { computed } from '#imports';
 
 export function useWindow() {
-	return computed(() => (process.client ? window : null));
+	return computed(() => (import.meta.client ? window : null));
 }

@@ -1,25 +1,20 @@
-export type ThrottledFunction<T extends (...args: any) => any> = (...args: Parameters<T>) => ReturnType<T>;
+export type ThrottledFunction<T extends (...args: never[]) => unknown> = (
+	...args: Parameters<T>
+) => ReturnType<T> | undefined;
 
-// eslint-disable-next-line space-before-function-paren
-export function throttle<T extends (...args: any) => any>(func: T, limit: number): ThrottledFunction<T> {
-	let inThrottle: boolean;
-	let lastResult: ReturnType<T>;
+export function throttle<T extends (...args: never[]) => unknown>(func: T, limit: number): ThrottledFunction<T> {
+	let inThrottle = false;
+	let lastResult: ReturnType<T> | undefined;
 
-	// eslint-disable-next-line func-names
-	return function (this: any): ReturnType<T> {
-		// eslint-disable-next-line prefer-rest-params
-		const args = arguments;
-		// eslint-disable-next-line @typescript-eslint/no-this-alias
-		const context = this;
-
+	return function throttled(this: unknown, ...args: Parameters<T>) {
 		if (!inThrottle) {
 			inThrottle = true;
 
-			// eslint-disable-next-line no-return-assign
-			setTimeout(() => (inThrottle = false), limit);
+			setTimeout(() => {
+				inThrottle = false;
+			}, limit);
 
-			// @ts-ignore
-			lastResult = func.apply(context, args);
+			lastResult = func.apply(this, args) as ReturnType<T>;
 		}
 
 		return lastResult;

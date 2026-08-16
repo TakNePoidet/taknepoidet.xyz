@@ -24,7 +24,6 @@ function setPreference(value: string, event?: MouseEvent) {
 		$colorMode.preference = value;
 		return undefined;
 	}
-	// @ts-expect-error: Transition API
 	const transition = document.startViewTransition(async () => {
 		$colorMode.preference = value;
 		await nextTick();
@@ -71,7 +70,7 @@ const active = ref('');
 const { component, base } = useNamespace('theme-switcher');
 
 onMounted(() => {
-	if (process.client) {
+	if (import.meta.client) {
 		nextTick(() => (active.value = $colorMode.preference));
 	}
 });

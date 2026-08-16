@@ -24,7 +24,7 @@ const repos = computed<Repo[]>(() => [
 ]);
 const keys = computed(() => repos.value.map(({ key }) => key));
 const { data } = useAsyncData(
-	() => $fetch<{ stars: Record<string, number> }>('https://ungh.cc/stars/' + keys.value.join('+')),
+	() => $fetch<{ stars: Record<string, number> }>(`https://ungh.cc/stars/${keys.value.join('+')}`),
 	{
 		server: false
 	}
@@ -42,14 +42,13 @@ const stars = computed(() => {
 				<template v-for="(repo, index) in repos" :key="repo.key">
 					<article class="repo">
 						<div class="repo__title">
-							<!-- eslint-disable-next-line no-irregular-whitespace-->
-							{{ index + 1 }}. 
+							{{ index + 1 }}.&nbsp;
 							<h2>
 								<a target="_blank" :href="`https://github.com/${repo.key}`">{{ repo.title }}</a>
 							</h2>
 						</div>
 						<ul class="repo__labels">
-							<li v-if="stars[repo.key] > 0">
+							<li v-if="(stars[repo.key] ?? 0) > 0">
 								<base-icon :name="Icons.Star" />
 								{{ stars[repo.key] ?? 0 }}
 							</li>

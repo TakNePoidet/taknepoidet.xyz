@@ -2,7 +2,7 @@
 import type { GlitchResult } from 'powerglitch';
 import { PowerGlitch } from 'powerglitch';
 
-import { definePageMeta, onBeforeMount, onMounted, Page, templateRef } from '#imports';
+import { definePageMeta, onBeforeMount, onMounted, templateRef } from '#imports';
 import BaseIcon from '~/components/elements/BaseIcon.vue';
 import BasePicture from '~/components/elements/BasePicture.vue';
 import Seo from '~/components/utils/Seo.vue';
@@ -47,6 +47,7 @@ onBeforeMount(() => {
 	padding: 0;
 }
 </style>
+
 <style scoped lang="scss">
 @use 'assets/style/utility';
 @use 'assets/style/breakpoints';

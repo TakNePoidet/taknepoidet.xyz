@@ -61,7 +61,7 @@ watch(
 </script>
 
 <template>
-	<canvas ref="$canvas" class="noisy" :style="{ opacity: opacity + '%' }" />
+	<canvas ref="$canvas" class="noisy" :style="{ opacity: `${opacity}%` }" />
 </template>
 
 <style scoped lang="scss">

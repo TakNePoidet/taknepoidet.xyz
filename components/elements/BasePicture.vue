@@ -1,41 +1,7 @@
-<template>
-	<div class="picture">
-		<picture>
-			<source
-				v-for="(item, i) in sources"
-				:key="i"
-				:srcset="isVisible ? item.srcset : undefined"
-				:type="item.type"
-				:sizes="isVisible ? item.sizes : undefined"
-			/>
-
-			<img
-				ref="$element"
-				:src="placeholder"
-				:alt="alt"
-				:width="width"
-				:height="height"
-				:data-src="src"
-				:data-sizes="'auto'"
-				:loading="preload ? 'eager' : 'lazy'"
-				:style="{ aspectRatio: !isVisible ? `${width}/${height}` : undefined }"
-			/>
-			<template v-if="preload">
-				<Link
-					rel="preload"
-					as="image"
-					:imagesizes="preloadSources.imagesizes"
-					:imagesrcset="preloadSources.imagesrcset"
-				/>
-			</template>
-		</picture>
-	</div>
-</template>
-
 <script lang="ts" setup>
 import { templateRef } from '@vueuse/core';
 import { createPlaceholderFromHash } from 'unlazy';
-import { type PropType, readonly, type Ref } from 'vue';
+import { type PropType, type Ref, readonly } from 'vue';
 
 import { computed, ref, useVisible } from '#imports';
 import { useNuxtImage } from '~/composables/useNuxtImage';
@@ -79,7 +45,6 @@ const props = defineProps({
 });
 
 function getFileExtension(url: string) {
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	return url.split(/[?#]/).shift()!.split('/').pop()!.split('.').pop()!;
 }
 
@@ -109,7 +74,12 @@ const placeholder = computed(() => {
 	return $img(props.src, { quality: 90, width: 100, fit: 'cover', format: 'webp' });
 });
 
-type Source = { srcset: string; src?: string; type?: string; sizes?: string };
+interface Source {
+	srcset: string;
+	src?: string;
+	type?: string;
+	sizes?: string;
+}
 const sources = computed<Source[]>(() => {
 	if (format.value === 'svg') {
 		return [{ srcset: props.src }];
@@ -137,6 +107,41 @@ const preloadSources = computed(() => {
 	return { imagesizes, imagesrcset };
 });
 </script>
+
+<template>
+	<div class="picture">
+		<picture>
+			<source
+				v-for="(item, i) in sources"
+				:key="i"
+				:srcset="isVisible ? item.srcset : undefined"
+				:type="item.type"
+				:sizes="isVisible ? item.sizes : undefined"
+			/>
+
+			<img
+				ref="$element"
+				:src="placeholder"
+				:alt="alt"
+				:width="width"
+				:height="height"
+				:data-src="src"
+				data-sizes="auto"
+				:loading="preload ? 'eager' : 'lazy'"
+				:style="{ aspectRatio: !isVisible ? `${width}/${height}` : undefined }"
+			/>
+			<template v-if="preload">
+				<Link
+					rel="preload"
+					as="image"
+					:imagesizes="preloadSources.imagesizes"
+					:imagesrcset="preloadSources.imagesrcset"
+				/>
+			</template>
+		</picture>
+	</div>
+</template>
+
 <style scoped lang="scss">
 .picture {
 	$self: &;

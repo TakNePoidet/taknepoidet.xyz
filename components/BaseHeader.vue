@@ -47,7 +47,7 @@ watch(useWindowSize().width, (value, oldValue) => {
 });
 
 function scrollTop() {
-	if (!process.client) {
+	if (!import.meta.client) {
 		return undefined;
 	}
 	window.scrollTo({

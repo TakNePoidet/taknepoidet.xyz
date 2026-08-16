@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 
 import { useAsyncData } from '#app';
-import { computed, Page } from '#imports';
+import { Page, computed } from '#imports';
 import BaseSection from '~/components/BaseSection.vue';
 import BasePicture from '~/components/elements/BasePicture.vue';
 import MotionScroll from '~/components/utils/MotionScroll.vue';
@@ -11,7 +11,10 @@ import type { ModelPortfolio } from '~/stores/portfolio';
 import { usePortfolioStore } from '~/stores/portfolio';
 
 const portfolioStore = usePortfolioStore();
-await useAsyncData('portfolios', portfolioStore.fetch);
+await useAsyncData('portfolios', async () => {
+	await portfolioStore.fetch();
+	return null;
+});
 
 const { portfolios } = storeToRefs(portfolioStore);
 
@@ -32,7 +35,7 @@ const favorites = computed<ModelPortfolio[]>(() => {
 	<motion-scroll>
 		<base-section title="Работы, о которых хочется рассказать" :badge="portfolios.length" class="section-portfolio">
 			<div class="section-portfolio-content">
-				<div v-for="item in favorites" :key="item._id" class="portfolio-preview">
+				<div v-for="item in favorites" :key="item.id" class="portfolio-preview">
 					<nuxt-link :href="item.permalink" target="_blank" :title="item.title">
 						<base-picture
 							v-if="item.cover"

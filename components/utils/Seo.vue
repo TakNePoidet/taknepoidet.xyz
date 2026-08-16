@@ -1,30 +1,5 @@
-<template>
-	<Head>
-		<Title>{{ title }}</Title>
-		<Meta name="title" :content="title" />
-		<Meta property="og:title" :content="title" />
-		<Meta property="twitter:title" :content="title" />
-
-		<template v-if="description">
-			<Meta name="description" :content="description" />
-			<Meta property="og:description" :content="description" />
-			<Meta property="twitter:description" :content="description" />
-		</template>
-
-		<template v-if="cover">
-			<Meta property="twitter:card" content="summary_large_image" />
-			<Meta property="twitter:image" :content="cover" />
-			<Meta property="og:image" :content="cover" />
-			<Meta property="vk:image" :content="cover" />
-		</template>
-		<template v-if="canonical">
-			<canonical :canonical="canonical" />
-		</template>
-	</Head>
-</template>
-
 <script setup lang="ts">
-import { computed, type PropType } from 'vue';
+import { type PropType, computed } from 'vue';
 
 import Canonical from '~/components/utils/Canonical.vue';
 
@@ -62,3 +37,28 @@ const title = computed(() => {
 	return props.title ?? 'Якин Никита | TakNePoidet';
 });
 </script>
+
+<template>
+	<Head>
+		<Title>{{ title }}</Title>
+		<Meta name="title" :content="title" />
+		<Meta property="og:title" :content="title" />
+		<Meta property="twitter:title" :content="title" />
+
+		<template v-if="description">
+			<Meta name="description" :content="description" />
+			<Meta property="og:description" :content="description" />
+			<Meta property="twitter:description" :content="description" />
+		</template>
+
+		<template v-if="cover">
+			<Meta property="twitter:card" content="summary_large_image" />
+			<Meta property="twitter:image" :content="cover" />
+			<Meta property="og:image" :content="cover" />
+			<Meta property="vk:image" :content="cover" />
+		</template>
+		<template v-if="canonical">
+			<canonical :canonical="canonical" />
+		</template>
+	</Head>
+</template>

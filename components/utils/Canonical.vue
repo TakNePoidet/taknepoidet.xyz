@@ -11,7 +11,7 @@ const props = defineProps({
 	}
 });
 
-if (!process.client && props.canonical) {
+if (!import.meta.client && props.canonical) {
 	const event = useRequestEvent() as unknown as H3Event;
 
 	setResponseHeaders(event, {

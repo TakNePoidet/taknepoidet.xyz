@@ -8,7 +8,11 @@ interface Params {
 
 export function useVisible($el: Ref<HTMLElement | null>, params: Partial<Params> = {}) {
 	const visible = ref<boolean>(false);
-	const { stop, isSupported } = useIntersectionObserver($el, ([{ isIntersecting }]) => {
+	const { stop, isSupported } = useIntersectionObserver($el, ([entry]) => {
+		if (!entry) {
+			return;
+		}
+		const { isIntersecting } = entry;
 		if (params.once === true) {
 			if (isIntersecting) {
 				visible.value = isIntersecting;

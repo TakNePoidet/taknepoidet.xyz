@@ -1,27 +1,46 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import process from 'node:process';
+import { fileURLToPath } from 'node:url';
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
+	compatibilityDate: '2025-07-15',
+	// Opt out of the Nuxt 4 `app/` srcDir: @poidet/svg-sprite resolves its input
+	// against rootDir but its generated import against srcDir, so the two only
+	// agree while srcDir is the project root. `app/router.options.ts` still works
+	// because `dir.app` keeps pointing at `app/`.
+	srcDir: '.',
+	dir: {
+		app: 'app'
+	},
 	devtools: { enabled: true },
-	css: ['assets/style/index.scss', ...(isProduction ? ['assets/style/production.scss'] : [])],
+	css: ['~/assets/style/index.scss', ...(isProduction ? ['~/assets/style/production.scss'] : [])],
 	components: false,
 	imports: {
 		autoImport: false
 	},
-	// @ts-ignore
 	modules: [
+		'@nuxt/eslint',
 		'@nuxtjs/google-fonts',
 		'@vueuse/nuxt',
 		'@pinia/nuxt',
 		'@nuxt/image',
 		'@nuxtjs/color-mode',
-		'nuxt-simple-sitemap',
-		'nuxt-simple-robots',
+		'@nuxtjs/sitemap',
+		'@nuxtjs/robots',
 		'nuxt-yandex-metrika',
-		'@pinia/nuxt',
 		'@nuxt/content',
 		'@poidet/svg-sprite'
 	],
+	eslint: {
+		config: {
+			// The Vue/import/stylistic presets come from @poidet/eslint-config;
+			// this module only contributes the Nuxt-specific rules on top.
+			standalone: false,
+			stylistic: false
+		}
+	},
 	svgSprite: {
 		pageIcons: false
 	},
@@ -53,7 +72,17 @@ export default defineNuxtConfig({
 		url: process.env.NUXT_PUBLIC_SITE_URL
 	},
 	routeRules: {
-		'/fallback': { index: false }
+		'/fallback': { robots: false }
+	},
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					// Allows bare `@use 'assets/style/…'` specifiers inside SFC style blocks.
+					loadPaths: [fileURLToPath(new URL('.', import.meta.url))]
+				}
+			}
+		}
 	},
 	postcss: isProduction
 		? {

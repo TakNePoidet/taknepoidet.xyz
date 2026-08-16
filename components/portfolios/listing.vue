@@ -14,7 +14,7 @@ defineProps({
 
 <template>
 	<div class="portfolio-listing">
-		<template v-for="(item, index) in items" :key="item._id">
+		<template v-for="(item, index) in items" :key="item.id">
 			<portfolio :article="item" />
 			<hr v-if="index < items.length - 1" />
 		</template>
