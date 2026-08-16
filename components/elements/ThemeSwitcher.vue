@@ -1,8 +1,19 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, useBodyScrollLock, useColorMode, useNamespace, watch } from '#imports';
+import {
+	computed,
+	nextTick,
+	onMounted,
+	ref,
+	useBodyScrollLock,
+	useColorMode,
+	useNamespace,
+	useReducedMotion,
+	watch
+} from '#imports';
 
 const $colorMode = useColorMode();
 const isDark = computed(() => $colorMode.value === 'dark');
+const reducedMotion = useReducedMotion();
 
 const { unlock, lock } = useBodyScrollLock();
 
@@ -20,7 +31,9 @@ function setPreference(value: string, event?: MouseEvent) {
 		}
 	})();
 
-	if (!isSwitch) {
+	// Swap instantly when there is nothing to reveal, when the user asked for less
+	// motion, or when the browser has no View Transitions API.
+	if (!isSwitch || reducedMotion.value || typeof document.startViewTransition !== 'function') {
 		$colorMode.preference = value;
 		return undefined;
 	}

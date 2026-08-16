@@ -1,0 +1,50 @@
+/* Cross-cutting polish: motion preferences, native UI theming, text details. */
+
+:root.light-mode {
+	color-scheme: light;
+}
+
+:root.dark-mode {
+	color-scheme: dark;
+}
+
+html {
+	/* Keeps the layout from jumping sideways when useBodyScrollLock() toggles
+	   `overflow: hidden` on <html> for the mobile menu. */
+	scrollbar-gutter: stable;
+	text-size-adjust: none;
+}
+
+body {
+	font-synthesis-weight: none;
+	text-rendering: optimizelegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+	background-color: var(--brand-color);
+	color: var(--brand-color-invert);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-delay: 0ms !important;
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+
+	html {
+		scroll-behavior: auto !important;
+	}
+
+	/* The theme switcher's circular reveal. */
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}

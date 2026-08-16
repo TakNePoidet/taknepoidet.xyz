@@ -97,6 +97,11 @@ const favorites = computed<ModelPortfolio[]>(() => {
 	}
 
 	.portfolio-preview {
+		overflow: hidden;
+		transition:
+			transform var(--transition-animation),
+			box-shadow var(--transition-animation);
+
 		a {
 			display: block;
 			height: 100%;
@@ -114,6 +119,16 @@ const favorites = computed<ModelPortfolio[]>(() => {
 			width: 100%;
 			height: 100%;
 			border-radius: inherit;
+			transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+		}
+
+		@include utility.has-hover {
+			box-shadow: 0 #{utility.rem(18)} #{utility.rem(40)} rgb(0 0 0 / 12%);
+			transform: translateY(#{utility.rem(-4)});
+
+			:deep(.picture) img {
+				transform: scale(1.04);
+			}
 		}
 
 		@include breakpoints.media-up('xl') {

@@ -3,7 +3,7 @@ import { animate, scroll } from 'motion';
 import type { DOMKeyframesDefinition } from 'motion-dom';
 import type { PropType } from 'vue';
 
-import { onMounted, templateRef } from '#imports';
+import { onMounted, templateRef, useReducedMotion } from '#imports';
 
 const { keyframes } = defineProps({
 	keyframes: {
@@ -14,9 +14,12 @@ const { keyframes } = defineProps({
 	}
 });
 const $root = templateRef<HTMLElement>('$root');
+const reducedMotion = useReducedMotion();
 
 onMounted(() => {
-	if ($root.value) {
+	// Without the animation the element keeps its natural styles, so opting out
+	// simply leaves the content visible.
+	if ($root.value && !reducedMotion.value) {
 		scroll(animate($root.value, keyframes), {
 			target: $root.value,
 			offset: ['0vh 100vh', '40vh 100vh']
