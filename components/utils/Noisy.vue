@@ -1,76 +1,37 @@
 <script setup lang="ts">
-import { templateRef, useElementBounding } from '@vueuse/core';
 import type { PropType } from 'vue';
 
-import { nextTick, onMounted, onUpdated, useSignal, watch } from '#imports';
-
 defineProps({
+	/** Strength of the grain, in percent. */
 	opacity: {
 		type: Number as PropType<number>,
 		default() {
-			return 10;
+			return 4;
 		}
 	}
 });
-
-const $canvas = templateRef<HTMLCanvasElement>('$canvas');
-const [context, setContext] = useSignal<CanvasRenderingContext2D | null>(null);
-const { width, height } = useElementBounding($canvas);
-
-function render(context: CanvasRenderingContext2D) {
-	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-	const imageData = context.createImageData(context.canvas.width, context.canvas.height);
-	const buffer = new Uint32Array(imageData.data.buffer);
-
-	for (let i = 0; i < buffer.length; i += 1) {
-		if (Math.random() < 0.5) {
-			buffer[i] = 0xffffffff;
-		}
-	}
-	context.putImageData(imageData, 0, 0);
-}
-
-watch(context, (value) => {
-	if (value) {
-		value.canvas.width = width.value;
-		value.canvas.height = height.value;
-		render(value);
-	}
-});
-onMounted(async () => {
-	await nextTick();
-	if ($canvas.value) {
-		setContext($canvas.value.getContext('2d'));
-	}
-});
-onUpdated(async () => {
-	await nextTick();
-	if ($canvas.value && context.value) {
-		render(context.value);
-	}
-});
-watch(
-	() => [width, height],
-	() => {
-		if (!context.value || $canvas.value) {
-			return;
-		}
-		render(context.value);
-	}
-);
 </script>
 
 <template>
-	<canvas ref="$canvas" class="noisy" :style="{ opacity: `${opacity}%` }" />
+	<div class="noisy" aria-hidden="true" :style="{ '--noisy-opacity': `${opacity}%` }" />
 </template>
 
 <style scoped lang="scss">
-canvas {
+/*
+ * A fixed film-grain layer. Rendered as a tiled SVG turbulence rather than a
+ * canvas full of random pixels: no per-pixel JS, no repaint on resize, and it
+ * stays a single composited layer. `overlay` blending makes it darken the light
+ * theme and lighten the dark one from the same tile.
+ */
+.noisy {
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	inset: 0;
+	z-index: 9999;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	background-size: #{180px} #{180px};
+	background-repeat: repeat;
+	opacity: var(--noisy-opacity);
+	mix-blend-mode: overlay;
 	pointer-events: none;
 }
 </style>

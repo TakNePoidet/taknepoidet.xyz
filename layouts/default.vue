@@ -1,7 +1,7 @@
-x
 <script setup lang="ts">
 import BaseFooter from '~/components/BaseFooter.vue';
 import BaseHeader from '~/components/BaseHeader.vue';
+import Noisy from '~/components/utils/Noisy.vue';
 </script>
 
 <template>
@@ -12,6 +12,7 @@ import BaseHeader from '~/components/BaseHeader.vue';
 			<nuxt-page />
 		</main>
 		<base-footer />
+		<noisy />
 	</div>
 </template>
 

@@ -91,6 +91,19 @@ const items = computed<ContactItem[]>(() => [
 			font-weight: 500;
 			font-size: #{utility.rem(32)};
 			line-height: 130%;
+			transition: transform var(--transition-animation);
+
+			:deep(.icon) {
+				transition: scale var(--transition-animation);
+			}
+
+			@include utility.has-hover {
+				transform: translateY(#{utility.rem(-3)});
+
+				:deep(.icon) {
+					scale: 1.08;
+				}
+			}
 
 			a {
 				color: var(--primary-text);

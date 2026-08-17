@@ -201,15 +201,32 @@ function action() {
 				font-size: #{utility.rem(24)};
 				line-height: 130%; /* 31.2px */
 				a {
+					position: relative;
 					color: inherit;
 					font: inherit;
+					text-decoration: none;
+					transition: color var(--transition-animation);
 
-					&:not(&:hover) {
-						text-decoration: none;
+					/* Underline grows out of the centre instead of appearing at once. */
+					&::after {
+						content: '';
+						position: absolute;
+						right: 0;
+						bottom: -0.08em;
+						left: 0;
+						height: #{utility.rem(2)};
+						border-radius: #{utility.rem(2)};
+						background-color: currentcolor;
+						transition: scale var(--transition-animation);
+						scale: 0 1;
 					}
 
 					@include utility.has-hover {
 						color: var(--brand-color);
+
+						&::after {
+							scale: 1 1;
+						}
 					}
 				}
 			}
