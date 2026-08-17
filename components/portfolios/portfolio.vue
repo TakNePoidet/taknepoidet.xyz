@@ -53,14 +53,23 @@ defineProps({
 	position: relative;
 	display: flex;
 	gap: #{utility.rem(20)};
+	align-items: center;
 	padding: #{utility.rem(20)};
 	border-radius: max(0px, min(#{utility.rem(16)}, calc((100vw - 100%) * 9999)));
 
 	& &__cover {
+		flex: 0 0 auto;
+		overflow: hidden;
+		width: #{utility.rem(320)};
+		border-radius: #{utility.rem(12)};
+
 		:deep(img) {
-			width: auto;
-			height: #{utility.rem(100)};
-			border-radius: #{utility.rem(12)};
+			object-fit: cover;
+			width: 100%;
+			height: auto;
+			aspect-ratio: 1200 / 628;
+			border-radius: inherit;
+			transition: scale 600ms cubic-bezier(0.22, 1, 0.36, 1);
 		}
 	}
 
@@ -109,7 +118,7 @@ defineProps({
 		display: flex;
 		gap: #{utility.rem(8)};
 		align-items: center;
-		align-self: end;
+		align-self: center;
 		padding: #{utility.rem(16)} #{utility.rem(32)};
 		border-radius: #{utility.rem(12)};
 		background-color: var(--blank-fill);
@@ -147,6 +156,10 @@ defineProps({
 					text-decoration: underline;
 				}
 			}
+
+			#{$self}__cover :deep(img) {
+				scale: 1.05;
+			}
 		}
 	}
 
@@ -161,8 +174,8 @@ defineProps({
 		#{$self}__link {
 			border-radius: #{utility.rem(8)};
 		}
-		#{$self}__cover :deep(img) {
-			height: #{utility.rem(70)};
+		#{$self}__cover {
+			width: #{utility.rem(240)};
 		}
 
 		#{$self}__title,
@@ -194,9 +207,8 @@ defineProps({
 		#{$self}__title {
 			font-size: #{utility.rem(20)};
 		}
-		#{$self}__cover :deep(img) {
+		#{$self}__cover {
 			width: 100%;
-			height: auto;
 		}
 		#{$self}__link {
 			gap: #{utility.rem(2)};
